@@ -1,0 +1,15 @@
+@import "../themes/defaultTheme";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
+
+@font-face {
+  font-family: neon;
+  src: url("../assets/neonFont.ttf");
+}
+
+body {
+  background-color: $backgroundColor;
+  font-family: neon;
+  color: white;
+  font-weight: 1;
+}

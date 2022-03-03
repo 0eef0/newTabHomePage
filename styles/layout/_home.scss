@@ -1,0 +1,307 @@
+$dark-background: #000;
+$neon-text-clr: #fff;
+$neon-text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+  0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+$red-neon-shadow: inset 0 0 2.5vw #fff, /* inner white */ inset 0.5vw 0 1vw #f0f,
+  /* inner left magenta short */ inset -1vw 0 1vw #f00,
+  /* inner right cyan short */ inset 0.5vw 0 5vw #f0f,
+  /* inner left magenta broad */ inset -1vw 0 5vw #f00,
+  /* inner right cyan broad */ 0 0 2.5vw #fff,
+  /* outer white */ -0.5vw 0 1vw #f0f,
+  /* outer left magenta */ 0.25vw 0 0.5vw #f00; /* outer right cyan */
+$border-white: 2px solid white;
+
+$light-background: #f5f6fa;
+$light-background-translucent: #f5f6faaa;
+$medium-light-background: #d8d8d8;
+$accent-color: #f7941d;
+
+/* Other Colors used */
+$clr-white: #fff;
+$clr-black: #222;
+$font-dark: #2d3436;
+$transparent-dark: #00000066;
+$transparent-darker: #00000099;
+$font-light: $light-background;
+$clr-red-dark: hsl(360, 67%, 44%);
+$clr-red-light: hsl(360, 71%, 66%);
+$clr-green-dark: hsl(125, 67%, 44%);
+$clr-green-light: hsl(125, 71%, 66%);
+$btn-light: #949494;
+$btn-dark: #303030;
+
+body {
+  //background-color: $dark-background;
+  background-color: $dark-background;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='348' height='348' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23333333' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23333333'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
+  a,
+  a:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #quizletCard {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    text-align: center;
+    flex-wrap: wrap;
+    box-shadow: $neon-text-shadow;
+    border: $border-white;
+    width: 80vw;
+    height: 80vh;
+    margin: 10vh 10vw;
+    padding: 1vh;
+    h1 {
+      width: 100%;
+      font-size: 5vw;
+      font-weight: 1;
+      color: $neon-text-clr;
+      text-shadow: $neon-text-shadow;
+    }
+    p {
+      display: none;
+      width: 100%;
+      font-size: 3vw;
+      font-weight: 1;
+      color: white;
+      text-shadow: $neon-text-shadow;
+    }
+    button {
+      font-size: 3vw;
+      font-weight: 1;
+      font-family: inherit;
+      color: white;
+      text-shadow: $neon-text-shadow;
+      background-color: transparent;
+      outline: none;
+      padding: 1vw;
+      border: $border-white;
+      transition: width 1s;
+    }
+  }
+
+  #homePage {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    div#header {
+      width: 100%;
+      height: 20vh;
+      margin-bottom: 5vh;
+      img {
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+      div#numFact {
+        width: 60vw;
+        height: 100%;
+        margin: 0 auto;
+        padding: 2vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: $neon-text-shadow;
+        animation: 0.5s ease-out 0s 1 flickerIn;
+        animation-fill-mode: forwards;
+
+        img {
+          filter: invert(1);
+          height: 15vh;
+        }
+        p {
+          width: 50vw;
+          font-size: 2vw;
+        }
+      }
+    }
+    form {
+      width: 60%;
+      height: 8vh;
+      border: $border-white;
+      border-radius: 3rem;
+      margin-bottom: 2.5vh;
+      background-color: transparent;
+      overflow: hidden;
+      .fa-google {
+        color: $neon-text-clr;
+      }
+      input[type="text"] {
+        background-color: $dark-background;
+        height: 100%;
+        width: 100%;
+        outline: none;
+        color: $neon-text-clr;
+        font-size: 2rem;
+        padding: 0 1rem;
+      }
+    }
+    div.carousel {
+      position: relative;
+      width: 90vw;
+      height: 40vh;
+      //overflow: hidden;
+      background-color: transparent;
+      i.arrow {
+        position: absolute;
+        top: 50%;
+        bottom: auto;
+        font-size: 2rem;
+        color: #2d3436;
+        mix-blend-mode: difference;
+
+        cursor: pointer;
+        &:hover {
+          color: $clr-black;
+        }
+        &.leftArrow {
+          left: 1vw;
+        }
+        &.rightArrow {
+          right: 1vw;
+          left: auto;
+          text-align: right;
+        }
+      }
+
+      div.carouselImages {
+        .carouselImg {
+          position: absolute;
+          top: calc(50% - 2rem);
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+          height: calc(100% - 2rem - 3vh);
+          opacity: 0;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 5vw;
+
+          .bookmark {
+            min-width: 100px;
+            font-size: 2vw;
+            img {
+              display: block;
+              margin: 2px auto;
+              height: 5vw;
+              filter: sepia(1) hue-rotate(260deg) saturate(5);
+            }
+            p {
+              text-shadow: $neon-text-shadow;
+            }
+          }
+
+          &.activeImg {
+            opacity: 1;
+            z-index: 10000;
+            animation: 0.5s ease-out 0s 1 flickerIn;
+            animation-fill-mode: forwards;
+          }
+        }
+      }
+      div.carouselBtnPanel {
+        position: absolute;
+        bottom: 0;
+        height: 10%;
+        padding: 1rem;
+        background-color: $dark-background;
+        left: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        button.carouselBtn {
+          flex-grow: 0.5;
+          margin: 0 0.25rem;
+          padding: 0.5rem;
+          height: auto;
+          font-size: 2.5vw;
+          background-color: transparent;
+          border: $border-white;
+          color: $neon-text-clr;
+          transition: box-shadow 1s, text-shadow 1s;
+          font-family: inherit;
+          &.activeBtn {
+            box-shadow: $neon-text-shadow;
+            text-shadow: $neon-text-shadow;
+          }
+        }
+      }
+    }
+    div#audioPanel {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      width: 6vh;
+      height: 40vh;
+      border: $border-white;
+      border-radius: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: space-between;
+      input[type="range"] {
+        -webkit-appearance: slider-vertical; /* Chromium */
+        height: 70%;
+        accent-color: #e60073;
+      }
+    }
+    div#portfolioLink {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 6vh;
+      height: 40vh;
+      border: $border-white;
+      border-radius: 3rem;
+      font-size: 3.5vh;
+      color: $neon-text-clr;
+    }
+  }
+}
+
+@keyframes flickerIn {
+  0%,
+  20%,
+  40%,
+  80% {
+    opacity: 0;
+  }
+  10%,
+  30%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes flickerOut {
+  0%,
+  20%,
+  40%,
+  80% {
+    opacity: 1;
+  }
+  10%,
+  30%,
+  50%,
+  100% {
+    opacity: 0;
+  }
+}

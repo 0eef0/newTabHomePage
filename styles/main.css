@@ -1,0 +1,440 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+main,
+article,
+aside,
+figure,
+footer,
+header,
+nav,
+section,
+details,
+summary {
+  display: block;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+img,
+object,
+embed {
+  max-width: 100%;
+  height: auto;
+}
+
+html {
+  overflow-y: auto;
+}
+
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+blockquote::before, blockquote::after,
+q::before,
+q::after {
+  content: "";
+  content: none;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted #222;
+  cursor: help;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th {
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
+td {
+  font-weight: normal;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+input [type=radio] {
+  vertical-align: text-bottom;
+}
+
+input [type=checkbox] {
+  vertical-align: bottom;
+}
+
+.ie7 input [type=checkbox] {
+  vertical-align: baseline;
+}
+
+.ie6 input[type=checkbox] {
+  vertical-align: text-bottom;
+}
+
+select,
+input,
+textarea {
+  font-size: 99%;
+}
+
+small {
+  font-size: 99%;
+}
+
+strong {
+  font-weight: bold;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+
+sup {
+  top: -0.05em;
+}
+
+sub {
+  bottom: -0.025em;
+}
+
+.clickable,
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {
+  cursor: pointer;
+}
+
+button,
+input[type=button] {
+  width: auto;
+  overflow: hidden;
+}
+
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+@font-face {
+  font-family: neon;
+  src: url("../assets/neonFont.ttf");
+}
+body {
+  background-color: #ecf0f1;
+  font-family: neon;
+  color: white;
+  font-weight: 1;
+}
+
+/* outer right cyan */
+/* Other Colors used */
+body {
+  background-color: #000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='348' height='348' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23333333' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23333333'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+}
+body a,
+body a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+body #quizletCard {
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+  text-align: center;
+  flex-wrap: wrap;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  border: 2px solid white;
+  width: 80vw;
+  height: 80vh;
+  margin: 10vh 10vw;
+  padding: 1vh;
+}
+body #quizletCard h1 {
+  width: 100%;
+  font-size: 5vw;
+  font-weight: 1;
+  color: #fff;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+}
+body #quizletCard p {
+  display: none;
+  width: 100%;
+  font-size: 3vw;
+  font-weight: 1;
+  color: white;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+}
+body #quizletCard button {
+  font-size: 3vw;
+  font-weight: 1;
+  font-family: inherit;
+  color: white;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  background-color: transparent;
+  outline: none;
+  padding: 1vw;
+  border: 2px solid white;
+  transition: width 1s;
+}
+body #homePage {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}
+body #homePage div#header {
+  width: 100%;
+  height: 20vh;
+  margin-bottom: 5vh;
+}
+body #homePage div#header img {
+  height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+body #homePage div#header div#numFact {
+  width: 60vw;
+  height: 100%;
+  margin: 0 auto;
+  padding: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  animation: 0.5s ease-out 0s 1 flickerIn;
+  animation-fill-mode: forwards;
+}
+body #homePage div#header div#numFact img {
+  filter: invert(1);
+  height: 15vh;
+}
+body #homePage div#header div#numFact p {
+  width: 50vw;
+  font-size: 2vw;
+}
+body #homePage form {
+  width: 60%;
+  height: 8vh;
+  border: 2px solid white;
+  border-radius: 3rem;
+  margin-bottom: 2.5vh;
+  background-color: transparent;
+  overflow: hidden;
+}
+body #homePage form .fa-google {
+  color: #fff;
+}
+body #homePage form input[type=text] {
+  background-color: #000;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0 1rem;
+}
+body #homePage div.carousel {
+  position: relative;
+  width: 90vw;
+  height: 40vh;
+  background-color: transparent;
+}
+body #homePage div.carousel i.arrow {
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  font-size: 2rem;
+  color: #2d3436;
+  mix-blend-mode: difference;
+  cursor: pointer;
+}
+body #homePage div.carousel i.arrow:hover {
+  color: #222;
+}
+body #homePage div.carousel i.arrow.leftArrow {
+  left: 1vw;
+}
+body #homePage div.carousel i.arrow.rightArrow {
+  right: 1vw;
+  left: auto;
+  text-align: right;
+}
+body #homePage div.carousel div.carouselImages .carouselImg {
+  position: absolute;
+  top: calc(50% - 2rem);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: calc(100% - 2rem - 3vh);
+  opacity: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+body #homePage div.carousel div.carouselImages .carouselImg .bookmark {
+  min-width: 100px;
+  font-size: 2vw;
+}
+body #homePage div.carousel div.carouselImages .carouselImg .bookmark img {
+  display: block;
+  margin: 2px auto;
+  height: 5vw;
+  filter: sepia(1) hue-rotate(260deg) saturate(5);
+}
+body #homePage div.carousel div.carouselImages .carouselImg .bookmark p {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+}
+body #homePage div.carousel div.carouselImages .carouselImg.activeImg {
+  opacity: 1;
+  z-index: 10000;
+  animation: 0.5s ease-out 0s 1 flickerIn;
+  animation-fill-mode: forwards;
+}
+body #homePage div.carousel div.carouselBtnPanel {
+  position: absolute;
+  bottom: 0;
+  height: 10%;
+  padding: 1rem;
+  background-color: #000;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+body #homePage div.carousel div.carouselBtnPanel button.carouselBtn {
+  flex-grow: 0.5;
+  margin: 0 0.25rem;
+  padding: 0.5rem;
+  height: auto;
+  font-size: 2.5vw;
+  background-color: transparent;
+  border: 2px solid white;
+  color: #fff;
+  transition: box-shadow 1s, text-shadow 1s;
+  font-family: inherit;
+}
+body #homePage div.carousel div.carouselBtnPanel button.carouselBtn.activeBtn {
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+}
+body #homePage div#audioPanel {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 6vh;
+  height: 40vh;
+  border: 2px solid white;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+}
+body #homePage div#audioPanel input[type=range] {
+  -webkit-appearance: slider-vertical;
+  /* Chromium */
+  height: 70%;
+  accent-color: #e60073;
+}
+body #homePage div#portfolioLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 6vh;
+  height: 40vh;
+  border: 2px solid white;
+  border-radius: 3rem;
+  font-size: 3.5vh;
+  color: #fff;
+}
+
+@keyframes flickerIn {
+  0%, 20%, 40%, 80% {
+    opacity: 0;
+  }
+  10%, 30%, 50%, 100% {
+    opacity: 1;
+  }
+}
+@keyframes flickerOut {
+  0%, 20%, 40%, 80% {
+    opacity: 1;
+  }
+  10%, 30%, 50%, 100% {
+    opacity: 0;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
