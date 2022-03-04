@@ -122,7 +122,12 @@ body {
         }
         p {
           width: 50vw;
-          font-size: 2vw;
+          font-size: calc(1.25vw + 1.5vh);
+        }
+        @media only screen and (max-width: 600px) {
+          & {
+            width: 80vw;
+          }
         }
       }
     }
@@ -143,37 +148,20 @@ body {
         width: 100%;
         outline: none;
         color: $neon-text-clr;
-        font-size: 2rem;
+        font-size: calc(1.25vw + 1.25vh);
         padding: 0 1rem;
+      }
+      @media only screen and (max-width: 600px) {
+        & {
+          width: 80%;
+        }
       }
     }
     div.carousel {
       position: relative;
       width: 90vw;
       height: 40vh;
-      //overflow: hidden;
       background-color: transparent;
-      i.arrow {
-        position: absolute;
-        top: 50%;
-        bottom: auto;
-        font-size: 2rem;
-        color: #2d3436;
-        mix-blend-mode: difference;
-
-        cursor: pointer;
-        &:hover {
-          color: $clr-black;
-        }
-        &.leftArrow {
-          left: 1vw;
-        }
-        &.rightArrow {
-          right: 1vw;
-          left: auto;
-          text-align: right;
-        }
-      }
 
       div.carouselImages {
         .carouselImg {
@@ -192,11 +180,12 @@ body {
 
           .bookmark {
             min-width: 100px;
-            font-size: 2vw;
+            font-size: 1.25rem;
             img {
               display: block;
               margin: 2px auto;
               height: 5vw;
+              min-height: 50px;
               filter: sepia(1) hue-rotate(260deg) saturate(5);
             }
             p {
@@ -218,11 +207,11 @@ body {
         height: 10%;
         padding: 1rem;
         background-color: $dark-background;
-        left: 20%;
+        left: 15%;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        width: 60%;
+        width: 70%;
         button.carouselBtn {
           flex-grow: 0.5;
           margin: 0 0.25rem;
@@ -237,6 +226,15 @@ body {
           &.activeBtn {
             box-shadow: $neon-text-shadow;
             text-shadow: $neon-text-shadow;
+          }
+        }
+        @media only screen and (max-width: 600px) {
+          & {
+            width: 100%;
+            left: 0;
+            button.carouselBtn {
+              font-size: 0.75rem;
+            }
           }
         }
       }
@@ -258,6 +256,33 @@ body {
         height: 70%;
         accent-color: #e60073;
       }
+      @media only screen and (max-width: 600px) {
+        & {
+          position: fixed;
+          top: 92vh;
+          left: 5vw;
+          width: 90vw;
+          height: 6vh;
+          border: 2px solid white;
+          border-radius: 3rem;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          input[type="range"] {
+            -webkit-appearance: slider-horizontal; /* Chromium */
+            width: 70%;
+            height: unset;
+            order: 1;
+          }
+          .fa-play,
+          .fa-pause {
+            order: 2;
+            margin-top: 0 !important;
+            margin-left: 3vh;
+          }
+        }
+      }
     }
     div#portfolioLink {
       display: flex;
@@ -272,6 +297,11 @@ body {
       border-radius: 3rem;
       font-size: 3.5vh;
       color: $neon-text-clr;
+      @media only screen and (max-width: 600px) {
+        & {
+          display: none;
+        }
+      }
     }
   }
 }

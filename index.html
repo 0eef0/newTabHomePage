@@ -62,7 +62,7 @@
                     </div>
                     <div class="bookmark">
                         <a href="https://github.com/">
-                            <img src="https://pngimg.com/uploads/github/github_PNG83.png" style="filter: invert(1);" alt="Github">
+                            <img src="https://pngimg.com/uploads/github/github_PNG83.png" style="filter: invert(0.5) sepia(1) hue-rotate(260deg) saturate(5);" alt="Github">
                             <p>Github</p>
                         </a>
                     </div>
@@ -133,7 +133,7 @@
             </div>
         </div>
         <div id="audioPanel">
-            <input type="range" min="1" max="100" value="25" id="volumeSlider">
+            <input type="range" min="1" max="100" value="25" id="volumeSlider" onchange="changeVolume(this.value)">
             <i class="fa fa-volume-up"></i>
             <i class="fa fa-pause" style="margin-top: 3vh;" id="musicToggle"></i>
         </div>

@@ -69,9 +69,9 @@ const showQAnswer = () => {
 }
 
 // music controls
-volumeSliderDOM.addEventListener('mouseup', () => {
-    ambient.volume = volumeSliderDOM.value / 100;
-});
+const changeVolume = (value) => {
+    ambient.volume = value / 100;
+};
 
 musicToggleDOM.addEventListener('mousedown', () => {
     if(!ambient.paused) {

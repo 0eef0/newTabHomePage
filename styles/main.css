@@ -276,7 +276,12 @@ body #homePage div#header div#numFact img {
 }
 body #homePage div#header div#numFact p {
   width: 50vw;
-  font-size: 2vw;
+  font-size: calc(1.25vw + 1.5vh);
+}
+@media only screen and (max-width: 600px) {
+  body #homePage div#header div#numFact {
+    width: 80vw;
+  }
 }
 body #homePage form {
   width: 60%;
@@ -296,34 +301,19 @@ body #homePage form input[type=text] {
   width: 100%;
   outline: none;
   color: #fff;
-  font-size: 2rem;
+  font-size: calc(1.25vw + 1.25vh);
   padding: 0 1rem;
+}
+@media only screen and (max-width: 600px) {
+  body #homePage form {
+    width: 80%;
+  }
 }
 body #homePage div.carousel {
   position: relative;
   width: 90vw;
   height: 40vh;
   background-color: transparent;
-}
-body #homePage div.carousel i.arrow {
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  font-size: 2rem;
-  color: #2d3436;
-  mix-blend-mode: difference;
-  cursor: pointer;
-}
-body #homePage div.carousel i.arrow:hover {
-  color: #222;
-}
-body #homePage div.carousel i.arrow.leftArrow {
-  left: 1vw;
-}
-body #homePage div.carousel i.arrow.rightArrow {
-  right: 1vw;
-  left: auto;
-  text-align: right;
 }
 body #homePage div.carousel div.carouselImages .carouselImg {
   position: absolute;
@@ -341,12 +331,13 @@ body #homePage div.carousel div.carouselImages .carouselImg {
 }
 body #homePage div.carousel div.carouselImages .carouselImg .bookmark {
   min-width: 100px;
-  font-size: 2vw;
+  font-size: 1.25rem;
 }
 body #homePage div.carousel div.carouselImages .carouselImg .bookmark img {
   display: block;
   margin: 2px auto;
   height: 5vw;
+  min-height: 50px;
   filter: sepia(1) hue-rotate(260deg) saturate(5);
 }
 body #homePage div.carousel div.carouselImages .carouselImg .bookmark p {
@@ -364,11 +355,11 @@ body #homePage div.carousel div.carouselBtnPanel {
   height: 10%;
   padding: 1rem;
   background-color: #000;
-  left: 20%;
+  left: 15%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 60%;
+  width: 70%;
 }
 body #homePage div.carousel div.carouselBtnPanel button.carouselBtn {
   flex-grow: 0.5;
@@ -385,6 +376,15 @@ body #homePage div.carousel div.carouselBtnPanel button.carouselBtn {
 body #homePage div.carousel div.carouselBtnPanel button.carouselBtn.activeBtn {
   box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+}
+@media only screen and (max-width: 600px) {
+  body #homePage div.carousel div.carouselBtnPanel {
+    width: 100%;
+    left: 0;
+  }
+  body #homePage div.carousel div.carouselBtnPanel button.carouselBtn {
+    font-size: 0.75rem;
+  }
 }
 body #homePage div#audioPanel {
   position: fixed;
@@ -405,6 +405,34 @@ body #homePage div#audioPanel input[type=range] {
   height: 70%;
   accent-color: #e60073;
 }
+@media only screen and (max-width: 600px) {
+  body #homePage div#audioPanel {
+    position: fixed;
+    top: 92vh;
+    left: 5vw;
+    width: 90vw;
+    height: 6vh;
+    border: 2px solid white;
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  body #homePage div#audioPanel input[type=range] {
+    -webkit-appearance: slider-horizontal;
+    /* Chromium */
+    width: 70%;
+    height: unset;
+    order: 1;
+  }
+  body #homePage div#audioPanel .fa-play,
+body #homePage div#audioPanel .fa-pause {
+    order: 2;
+    margin-top: 0 !important;
+    margin-left: 3vh;
+  }
+}
 body #homePage div#portfolioLink {
   display: flex;
   justify-content: center;
@@ -418,6 +446,11 @@ body #homePage div#portfolioLink {
   border-radius: 3rem;
   font-size: 3.5vh;
   color: #fff;
+}
+@media only screen and (max-width: 600px) {
+  body #homePage div#portfolioLink {
+    display: none;
+  }
 }
 
 @keyframes flickerIn {
