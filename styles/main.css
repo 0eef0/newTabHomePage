@@ -364,11 +364,11 @@ body #homePage div.carousel div.carouselBtnPanel {
   height: 10%;
   padding: 1rem;
   background-color: #000;
-  left: 0;
+  left: 20%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
+  width: 60%;
 }
 body #homePage div.carousel div.carouselBtnPanel button.carouselBtn {
   flex-grow: 0.5;
