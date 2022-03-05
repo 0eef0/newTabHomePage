@@ -8,6 +8,7 @@ const quizletADOM = document.getElementById('quizletA');
 const quizletBtnDOM = document.getElementById('quizletBtn');
 const homePageDOM = document.getElementById('homePage');
 const searchBarDOM = document.getElementById('searchBar');
+const audioDOM = document.getElementById('ambientMusic')
 const volumeSliderDOM = document.getElementById('volumeSlider');
 const musicToggleDOM = document.getElementById('musicToggle');
 
@@ -36,63 +37,49 @@ let playlist = ["Sono Chi No Sadame", "Bloody Stream", "Jotaro's Theme", "Kira's
 playlist.forEach((song, index) => {
     playlist[index] = {
         title: song,
-        audio: new Audio(`./assets/ambient${index+1}.mp3`)
+        //audio: new Audio(`./assets/ambient${index+1}.mp3`)
+        audio: `./assets/ambient${index+1}.mp3`
     }
 });
 playlist = shuffle(playlist);
 
 let currSong = 0;
-let ambient = playlist[currSong];
-ambient.volume = 0.25;
 
 const prevSong = () => {
-    if(ambient.audio.currentTime <= 3) {
-        ambient.audio.pause();
+    if(audioDOM.currentTime <= 3) {
         if(currSong > 0){
             currSong--;
         } else {
             currSong = playlist.length-1;
         }
-        ambient = playlist[currSong];
-        ambient.audio.currentTime = 0;
-        ambient.audio.volume = volumeSliderDOM.value/100;
-        ambient.audio.play();
-        $('#songTitle').html(ambient.title);
+        audioDOM.src = playlist[currSong].audio;
+        $('#songTitle').html(playlist[currSong].title);
     } else {
-        ambient.audio.currentTime = 0;
+        audioDOM.currentTime = 0;
     }
 }
 
 const nextSong = () => {
-    ambient.audio.pause();
     if(currSong < playlist.length-1){
         currSong++;
     } else {
         currSong = 0;
     }
-    ambient = playlist[currSong];
-    ambient.audio.currentTime = 0;
-    ambient.audio.volume = volumeSliderDOM.value/100;
-    ambient.audio.play();
-    $('#songTitle').html(ambient.title);
+    audioDOM.src = playlist[currSong].audio;
+    $('#songTitle').html(playlist[currSong].title);
 };
 
-ambient.audio.addEventListener('ended', () => {
-    nextSong();
-});
-
-// music controls
 const changeVolume = (value) => {
-    ambient.audio.volume = value / 100;
+    audioDOM.volume = value / 100;
 };
 
 musicToggleDOM.addEventListener('mousedown', () => {
-    if(!ambient.audio.paused) {
-        ambient.audio.pause();
+    if(!audioDOM.paused) {
+        audioDOM.pause();
         musicToggleDOM.classList.remove('fa-pause');
         musicToggleDOM.classList.add('fa-play');
     } else {
-        ambient.audio.play();
+        audioDOM.play();
         musicToggleDOM.classList.remove('fa-play');
         musicToggleDOM.classList.add('fa-pause');
     }
@@ -131,8 +118,11 @@ const showQAnswer = () => {
     } else {
         quizletCardDOM.style.display = 'none';
         homePageDOM.style.display = 'flex';
-        ambient.audio.play();
-        $('#songTitle').html(ambient.title);
+        audioDOM.src = playlist[0].audio;
+        $('#songTitle').html(playlist[0].title);
+        $('#ambientMusic').on('ended', () => {
+            nextSong();
+        })
         setTimeout(() => {
             searchBarDOM.focus();
         }, 100);
@@ -152,7 +142,7 @@ const showQAnswer = () => {
                 'We will make it through today together!',
                 'Did the flashcard stump you?'
             ];
-            const secret = secrets[Math.floor(Math.random() * (secrets.length+1))];
+            const secret = secrets[Math.floor(Math.random() * (secrets.length))];
             for(let i = 0; i < secret.length; i++){
                 setTimeout(() => {
                     searchBarDOM.placeholder += secret[i];
