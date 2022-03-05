@@ -42,8 +42,8 @@ playlist.forEach((song, index) => {
 });
 playlist = shuffle(playlist);
 
+$('#songTitle').toggle();
 let currSong = 0;
-
 const prevSong = () => {
     if(audioDOM.currentTime <= 3) {
         if(currSong > 0){
@@ -57,7 +57,6 @@ const prevSong = () => {
         audioDOM.currentTime = 0;
     }
 }
-$('#songTitle').toggle();
 const nextSong = () => {
     if(currSong < playlist.length-1){
         currSong++;
@@ -71,6 +70,7 @@ const nextSong = () => {
 const changeVolume = (value) => {
     audioDOM.volume = value / 100;
 };
+changeVolume(25);
 
 musicToggleDOM.addEventListener('mousedown', () => {
     if(!audioDOM.paused) {
