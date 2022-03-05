@@ -33,11 +33,10 @@ function shuffle(array) {
 }
 
 // music stuff
-let playlist = ["Sono Chi No Sadame", "Bloody Stream", "Jotaro's Theme", "Kira's Theme", "Giorno's Theme", "Jolyne's Theme"];
+let playlist = ["Sono Chi No Sadame", "Bloody Stream", "Jotaro's Theme", "Kira's Theme", "Giorno's Theme", "Jolyne's Theme", "Josuke's Theme", "Stone Ocean", "Zankyou Sanka"];
 playlist.forEach((song, index) => {
     playlist[index] = {
         title: song,
-        //audio: new Audio(`./assets/ambient${index+1}.mp3`)
         audio: `./assets/ambient${index+1}.mp3`
     }
 });
@@ -53,12 +52,12 @@ const prevSong = () => {
             currSong = playlist.length-1;
         }
         audioDOM.src = playlist[currSong].audio;
-        $('#songTitle').html(playlist[currSong].title);
+        $('#songTitle').html(playlist[currSong].title).toggle(500).delay(3000).toggle(500);
     } else {
         audioDOM.currentTime = 0;
     }
 }
-
+$('#songTitle').toggle();
 const nextSong = () => {
     if(currSong < playlist.length-1){
         currSong++;
@@ -66,7 +65,7 @@ const nextSong = () => {
         currSong = 0;
     }
     audioDOM.src = playlist[currSong].audio;
-    $('#songTitle').html(playlist[currSong].title);
+    $('#songTitle').html(playlist[currSong].title).toggle(500).delay(3000).toggle(500);
 };
 
 const changeVolume = (value) => {
@@ -119,7 +118,7 @@ const showQAnswer = () => {
         quizletCardDOM.style.display = 'none';
         homePageDOM.style.display = 'flex';
         audioDOM.src = playlist[0].audio;
-        $('#songTitle').html(playlist[0].title);
+        $('#songTitle').html(playlist[0].title).toggle(500).delay(3000).toggle(500);
         $('#ambientMusic').on('ended', () => {
             nextSong();
         })
