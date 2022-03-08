@@ -252,6 +252,7 @@ body #homePage div#header {
   margin-bottom: 5vh;
 }
 body #homePage div#header img {
+  filter: sepia(1) hue-rotate(260deg) saturate(5);
   height: 100%;
   display: block;
   margin: 0 auto;
@@ -289,9 +290,6 @@ body #homePage form {
   margin-bottom: 2.5vh;
   background-color: transparent;
   overflow: hidden;
-}
-body #homePage form .fa-google {
-  color: #fff;
 }
 body #homePage form input[type=text] {
   background-color: #000;
@@ -402,6 +400,7 @@ body #homePage div#audioPanel input[type=range] {
   /* Chromium */
   height: 60%;
   accent-color: #e60073;
+  filter: saturate(10);
 }
 body #homePage div#audioPanel .fa {
   margin: 3px auto;
@@ -453,6 +452,29 @@ body #homePage div#audioPanel .fa-pause {
     bottom: 9vh;
     width: 100vw;
   }
+}
+body #homePage div#audioProgress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+}
+body #homePage div#audioProgress input {
+  width: 100%;
+  -webkit-appearance: none;
+  outline: none;
+  filter: saturate(10);
+  accent-color: #e60073;
+  background-color: rgba(230, 0, 115, 0.25);
+}
+body #homePage div#audioProgress input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* Override default look */
+  appearance: none;
+  content: "0:00";
+  background-color: #e60073;
+  height: 1rem;
+  width: 1rem;
 }
 body #homePage div#portfolioLink {
   display: flex;

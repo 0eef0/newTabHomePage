@@ -11,6 +11,7 @@ const searchBarDOM = document.getElementById('searchBar');
 const audioDOM = document.getElementById('ambientMusic')
 const volumeSliderDOM = document.getElementById('volumeSlider');
 const musicToggleDOM = document.getElementById('musicToggle');
+const progressBarDOM = document.getElementById('progressBar');
 
 // from stack overflow, for shuffle
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -33,7 +34,7 @@ function shuffle(array) {
 }
 
 // music stuff
-let playlist = ["Sono Chi No Sadame", "Bloody Stream", "Jotaro's Theme", "Kira's Theme", "Giorno's Theme", "Jolyne's Theme", "Josuke's Theme", "Stone Ocean", "Zankyou Sanka"];
+let playlist = ["Sono Chi No Sadame", "Bloody Stream", "Jotaro's Theme", "Kira's Theme", "Giorno's Theme", "Jolyne's Theme", "Josuke's Theme", "Stone Ocean", "Zankyou Sanka", "Bucciarati's Theme"];
 playlist.forEach((song, index) => {
     playlist[index] = {
         title: song,
@@ -52,6 +53,9 @@ const prevSong = () => {
             currSong = playlist.length-1;
         }
         audioDOM.src = playlist[currSong].audio;
+        setTimeout(() => {
+            progressBarDOM.max = Number(Math.floor(audioDOM.duration) * 100);
+        }, 100);
         $('#songTitle').html(playlist[currSong].title).toggle(500).delay(3000).toggle(500);
     } else {
         audioDOM.currentTime = 0;
@@ -64,6 +68,9 @@ const nextSong = () => {
         currSong = 0;
     }
     audioDOM.src = playlist[currSong].audio;
+    setTimeout(() => {
+        progressBarDOM.max = Number(Math.floor(audioDOM.duration) * 100);
+    }, 100);
     $('#songTitle').html(playlist[currSong].title).toggle(500).delay(3000).toggle(500);
 };
 
@@ -83,6 +90,19 @@ musicToggleDOM.addEventListener('mousedown', () => {
         musicToggleDOM.classList.add('fa-pause');
     }
 });
+
+let progress;
+progressBarDOM.addEventListener('mousedown', () => {
+    audioDOM.pause();
+    clearInterval(progress);
+});
+progressBarDOM.addEventListener('mouseup', () => {
+    audioDOM.currentTime = progressBarDOM.value / 100;
+    audioDOM.play();
+    progress = setInterval(() => {
+        progressBarDOM.value = audioDOM.currentTime * 100;
+    }, 10)
+})
 
 
 // stolen from a project last year, does the typing into divs
@@ -124,6 +144,10 @@ const showQAnswer = () => {
         })
         setTimeout(() => {
             searchBarDOM.focus();
+            progressBarDOM.max = Number(Math.floor(audioDOM.duration) * 100);
+            progress = setInterval(() => {
+                progressBarDOM.value = audioDOM.currentTime * 100;
+            }, 10)
         }, 100);
         // reveals the secret to the fun fact
         setTimeout(() => {
