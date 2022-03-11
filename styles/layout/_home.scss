@@ -131,11 +131,47 @@ body {
         }
       }
     }
+
+    div#todo {
+      position: relative;
+      width: 70vw;
+      height: 36vh;
+      margin-top: 4vh;
+      overflow-y: scroll;
+      background-color: transparent;
+      box-shadow: $neon-text-shadow;
+      animation-fill-mode: forwards;
+      div.task {
+        width: 90%;
+        border: $border-white;
+        margin: 1rem auto;
+        padding: 1rem;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        p {
+          text-align: left;
+          font-size: 2rem;
+          min-width: max-content;
+          &.subject {
+            width: 25%;
+          }
+          &.taskName {
+            width: 30%;
+          }
+          &.taskDue {
+            width: 45%;
+          }
+        }
+      }
+    }
+
     div.carousel {
       position: relative;
       width: 90vw;
       height: 40vh;
       background-color: transparent;
+      animation-fill-mode: forwards;
 
       div.carouselImages {
         .carouselImg {
@@ -297,14 +333,13 @@ body {
         &::-webkit-slider-thumb {
           -webkit-appearance: none; /* Override default look */
           appearance: none;
-          content: "0:00";
           background-color: $accent-color;
           height: 1rem;
           width: 1rem;
         }
       }
     }
-    div#portfolioLink {
+    div#todoLink {
       display: flex;
       justify-content: center;
       align-items: center;

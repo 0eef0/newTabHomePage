@@ -12,6 +12,7 @@ const audioDOM = document.getElementById('ambientMusic')
 const volumeSliderDOM = document.getElementById('volumeSlider');
 const musicToggleDOM = document.getElementById('musicToggle');
 const progressBarDOM = document.getElementById('progressBar');
+const todoLinkDOM = document.getElementById('todoLink')
 
 // from stack overflow, for shuffle
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -148,7 +149,7 @@ const showQAnswer = () => {
             progress = setInterval(() => {
                 progressBarDOM.value = audioDOM.currentTime * 100;
             }, 10)
-        }, 100);
+        }, 200);
         // reveals the secret to the fun fact
         setTimeout(() => {
             for(let i = 0; i < searchBarDOM.placeholder.length; i++){
@@ -195,7 +196,7 @@ $('#header').on('click', () => {
 });
 
 // Gets the random number fact
-var options = {
+let numberOptions = {
   method: 'GET',
   url: 'https://numbersapi.p.rapidapi.com/random/trivia',
   params: {min: '1', max: '1000', fragment: 'true', json: 'true'},
@@ -205,10 +206,55 @@ var options = {
   }
 };
 
-axios.request(options).then(function (response) {
+axios.request(numberOptions).then(function (response) {
 	const { text, number } = response.data;
     fact = `Stick me says: ${number} is ${text}`;
 
 }).catch(function (error) {
 	console.error(error);
 });
+
+const toDoDOM = document.getElementById('todo');
+const getWork = async() => {
+    try {
+        const { data: { task } } = await axios.get('https://roldan-todo-list.herokuapp.com/api/v1/tasks');
+        for(let i = 0; i < task.length; i++) {
+            const { task: taskName, dueTime, dueDate, subject } = task[i];
+
+            const date = dueDate.split('-');
+            const time = dueTime.split(':');
+            const formattedTime = `${(time[0] > 12) ? time[0]-12 : parseInt(time[0])}:${time[1]}${(time[0] > 12) ? 'pm' : 'am'}`;
+            const formattedDate = (new Date(`${date[1]}/${date[2]}/${date[0]}`)).toLocaleDateString("en-US");
+            const today = (new Date()).toLocaleDateString("en-US");
+            const tomorrow = (new Date(Date.now() + 86400000)).toLocaleDateString("en-US");
+            const yesterday = (new Date(Date.now() - 86400000)).toLocaleDateString("en-US");
+
+            toDoDOM.innerHTML += `
+            <div class="task">
+                <p class="subject">${subject}</p>
+                <p class="taskName">${taskName}</p>
+                <p class="taskDue">Due ${(formattedDate == today) ? 'today' : (formattedDate == tomorrow) ? 'tomorrow' : (formattedDate == yesterday) ? 'yesterday' : formattedDate} at ${formattedTime}</p>
+            </div>`;
+        }
+    } catch (err) {
+        console.error(err);
+    }
+}
+getWork();
+
+let showWork = false;
+todoLinkDOM.addEventListener('mousedown',() => {
+    if(!showWork) {
+        document.getElementsByClassName('carousel')[0].style.display = 'none';
+        toDoDOM.style.display = 'block';
+        toDoDOM.style.animation = '0.5s ease-out 0s 1 flickerIn';
+        todoLinkDOM.innerHTML = 'B<br>O<br>O<br>K<br>M<br>A<br>R<br>K<br>S';
+        showWork = true;
+    } else {
+        document.getElementsByClassName('carousel')[0].style.display = 'block';
+        document.getElementsByClassName('carousel')[0].style.animation = '0.5s ease-out 0s 1 flickerIn';
+        toDoDOM.style.display = 'none';
+        todoLinkDOM.innerHTML = 'T<br>O<br>D<br>O<br>-<br>L<br>I<br>S<br>T';
+        showWork = false;
+    }
+})
