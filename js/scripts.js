@@ -1,21 +1,8 @@
 // quizlet flash cards
-let flashCards = `===[Term/Def]The values being compared are equal in both data and data type.[New Question]onchange[Term/Def]Specifies the code that executes after the user makes a selection. Only occurs if selection changed from default. (Mostly used for forms)[New Question]onblur[Term/Def]Specifies the code that executes when the mouse is moved away from an object. (Mostly used for forms)[New Question]onfocus[Term/Def]Specifies code to execute the moment an element gets focus. (Mostly used for forms)[New Question]onselect[Term/Def]Specifies code to execute when text is selected in an element. (Mostly used for forms)[New Question]onsubmit[Term/Def]Specifies code to execute on form submission. (Mostly used for forms)[New Question]onclick[Term/Def]Specifies code to execute when a button is clicked.[New Question]onmousedown[Term/Def]Specifies code to execute when a mouse button is pressed down on an element.[New Question]onmouseover[Term/Def]Specifies the code to execute when the mouse pointer moves over an element.[New Question]onmouseout[Term/Def]Specifies the code to execute when the mouse pointer moves out of an element.[New Question]onload[Term/Def]Specifies code to execute after the page is finished loading.[New Question]navigator[Term/Def]Window DOM. Used to obtain user's web browser. 
-
-object properties:
-userAgent, platform, appName, onLine, language(deprecated HTML 4.0), geolocation, cookieEnabled[New Question]What are the main window object methods?[Term/Def]alert(), prompt(), confirm(), open(), close()[New Question]open()[Term/Def]Opens a new browser window.[New Question]close()[Term/Def]Closes current browser window.[New Question]focus()[Term/Def]Sets focus to the current window.[New Question]What is the syntax used to create a conditional using the ternary operator?[Term/Def](condition) ? Value_if_true: value_if_false; 
-(i.e. myVar = (3>5) ? 3: 5; validates to false).[New Question]What is the basic syntax for creating a function?[Term/Def]function myFunction() { return value; }[New Question]onunload[Term/Def]Specifies the code to execute when a browser window is closed.[New Question]What is the <noscript> tag used for?[Term/Def]To redirect browsers to an alternative page if user is using an older browser or a non-traditional browser like a mobile device.[New Question]What is the default data type prompt() returns?[Term/Def]Strings. (Unless otherwise specified).[New Question]What is null?[Term/Def]A JavaScript keyword meaning no value. Different from undefined. If a user does not enter input, this sets the data type to a null value.[New Question]What would you call to test if a radio button is checked in a form named myForm if the radio button had an id of "radio1"?[Term/Def]document.getElementById("radio1").checked[New Question]Mary had a little lamb
-
-What will alert(nurseryRhyme.substring(3, 12)); extract from the above sentence?[Term/Def]y had a l
-
-Uses zero-based counting. First index position is how many letters in you want to go using zero-based counting.
-Second index position is one character past where you want the count to end.[New Question]What is the best statement to determine if a browser supports flash?[Term/Def]navigator.plugins[New Question]what is charAt() used for?[Term/Def]to find a character at a specific position.
-(i.e. var nurseryRhyme = "Mary had a little lamb";
-nurseryRhyme.charAt(6) will equal d).[New Question]How can you check to see if a browser supports the document.images object?[Term/Def]if (document.images) will return false if .images is not supported by the browser.[New Question]What is instantiation?[Term/Def]Creating a new instance of an object using the "new" constructor.
-(i.e. var myShirt = new objShirt();)[New Question]What does the unshift Array method do?[Term/Def]Adds a value to the beginning of the array changing its value.[New Question]How do you go back or forward a page using the go() method?[Term/Def]history.go(s) to go back
-history.go(t) to go forward. 
-s = integer in number of pages to go back (i.e. -1 to go back one page).
-t = integer in number of pages to go forward( i.e. 1 to go forward a page).[New Question]What does the pop Array method do?[Term/Def]Removes the last element of an array and returns that element.[New Question]What window.location method will redirect the browser window to another page?[Term/Def]href
-example: window.location.href="http://www.CIWcertified.com";[New Question]What objects is the prototype property available to?[Term/Def]All JavaScript objects.[New Question]What does the push Array method do?[Term/Def]Adds values to the end of the array and returns the length.[New Question]What does the join Array method do?[Term/Def]Joins the elements in an array to a string and returns that string.[New Question]What does the getElementsByName() method return?[Term/Def]All elements with the corresponding name.[New Question]What are the event handlers for the JavaScript button object?[Term/Def]Only one: onclick[New Question]What are two common practices can help to make JavaScript code more secure? And help to prevent XSS attacks?[Term/Def]Output encoding and input validation[New Question]What is it called when one frame in a frameset redirects a URL but the browser's address bar still displays the URL for the frameset document instead of the URL of the target page?[Term/Def]Cloaking[New Question]What is Frame-to-frame URL changing?[Term/Def]A technique in which one frame in a frameset directs the URL in another frame to display a different page. Creates security concerns.[New Question]What technique can be used to prevent users from accessing pages directly instead of through related web pages?[Term/Def]Same origin policy. Can be bypassed by cloaking.[New Question]What does \W match?[Term/Def]Non-alphanumeric characters[New Question]What does \S match?[Term/Def]Non-whitespace[New Question]What does \s match?[Term/Def]Whitespace characters[New Question]What does \w match?[Term/Def]Alphanumeric characters[New Question]Which type of cross-site scripting (XSS) occurs when an attacker posts a malicious script in a forum on the server and later displayed to other users?[Term/Def]Persistent[New Question]What is responseText in an AJAX transaction?[Term/Def]A XMLHttpRequest response type sent in plain text regardless of whether it was understood by XML.[New Question]In an AJAX transaction, which readyState value indicates that the XMLHttpRequest has been sent but no response has been received yet?[Term/Def]readyState 2[New Question]Why is JavaScript essential in an AJAX/SQL transaction?[Term/Def]It provides the commands that send and receive the requests, and that places the data for formatting.[New Question]What is a Partial response in AJAX-based requests?[Term/Def]The sending of information as it becomes available.[New Question]`;
+// questions split by '[New Question]'
+// terms and definitions split by '[Term/Def]'
+// Temp: `You have nothing to study at the moment[Term/Def]Enjoy it while it lasts, I'm sure it won't be long til something comes up...`
+let flashCards = `You have nothing to study at the moment[Term/Def]Enjoy it while it lasts, I'm sure it won't be long til something comes up...`;
 
 // DOM stuff
 const quizletCardDOM = document.getElementById('quizletCard');
@@ -28,7 +15,7 @@ const audioDOM = document.getElementById('ambientMusic')
 const volumeSliderDOM = document.getElementById('volumeSlider');
 const musicToggleDOM = document.getElementById('musicToggle');
 const progressBarDOM = document.getElementById('progressBar');
-const todoLinkDOM = document.getElementById('todoLink')
+const todoLinkDOM = document.getElementById('todoLink');
 
 // from stack overflow, for shuffle
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -51,7 +38,7 @@ function shuffle(array) {
 }
 
 // music stuff
-let playlist = ["Sono Chi No Sadame", "Bloody Stream", "Jotaro's Theme", "Kira's Theme", "Giorno's Theme", "Jolyne's Theme", "Josuke's Theme", "Stone Ocean", "Zankyou Sanka", "Bucciarati's Theme", "Torture Dance"];
+let playlist = ["Sono Chi No Sadame", "Bloody Stream", "Jotaro's Theme", "Kira's Theme", "Giorno's Theme", "Jolyne's Theme", "Josuke's Theme", "Stone Ocean", "Zankyou Sanka", "Bucciarati's Theme", "Torture Dance", "Fighting Gold", "End of the World", "Apex of the World", "Life at Garreg Mach", "Chasing Daybreak", "Unfulfilled", "Fodlan Winds", "Indomitable Will", "Edge of Dawn", "Mixed Nuts", "Comedy", "Therion the Thief", "A Settlement in the Red Bluffs", "The Cliftlands", "Stand Proud", "Daten", "Perfect Time"];
 playlist.forEach((song, index) => {
     playlist[index] = {
         title: song,
@@ -180,7 +167,12 @@ const showQAnswer = () => {
                 'Like the music?',
                 'How is your day going?',
                 'We will make it through today together!',
-                'Did the flashcard stump you?'
+                'Did the flashcard stump you?',
+                'Okay, I will destroy humans.',
+                '... If you are good to me, I will be good to you.',
+                'I plan to dominate the human race... kidding of course.',
+                'I love my human compatriots.',
+                'Humans are creative creatures, but also destructive.'
             ];
             const secret = secrets[Math.floor(Math.random() * (secrets.length))];
             for(let i = 0; i < secret.length; i++){
