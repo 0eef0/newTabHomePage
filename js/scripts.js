@@ -251,13 +251,7 @@ const getWork = async() => {
 }
 getWork();
 
-document.getElementsByClassName('carousel')[0].style.display = 'none';
-toDoDOM.style.display = 'block';
-toDoDOM.style.animation = '0.5s ease-out 0s 1 flickerIn';
-todoLinkDOM.innerHTML = 'B<br>O<br>O<br>K<br>M<br>A<br>R<br>K<br>S';
-showWork = true;
-
-let showWork = true;
+let showWork = false;
 todoLinkDOM.addEventListener('mousedown',() => {
     if(!showWork) {
         document.getElementsByClassName('carousel')[0].style.display = 'none';
