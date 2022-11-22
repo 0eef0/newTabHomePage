@@ -363,7 +363,10 @@ const showQAnswer = () => {
                 'I plan to dominate the human race... kidding of course.',
                 'I love my human compatriots.',
                 'Humans are creative creatures, but also destructive.',
-                'I know where you live..... I\'m coming for you'
+                'I know where you live..... I\'m coming for you',
+                'You can\'t rush perfection',
+                'Stop looking at me and do your homework',
+                'Check your to-do list'
             ];
             const secret = secrets[Math.floor(Math.random() * (secrets.length))];
             for(let i = 0; i < secret.length; i++){
