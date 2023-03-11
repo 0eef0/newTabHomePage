@@ -1,11 +1,11 @@
 $dark-background: #000;
 $neon-text-clr: #fff;
-$accent-color: #e60073;
+$accent-color: #00ff00;
 $neon-text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px $accent-color,
   0 0 40px $accent-color, 0 0 50px $accent-color, 0 0 60px $accent-color,
   0 0 70px $accent-color;
 $border-white: 2px solid white;
-$img-filter: sepia(1) hue-rotate(260deg) saturate(5);
+$img-filter: sepia(1) hue-rotate(60deg) saturate(5);
 
 body {
   background-color: $dark-background;

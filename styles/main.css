@@ -203,7 +203,7 @@ body #quizletCard {
   align-content: space-between;
   text-align: center;
   flex-wrap: wrap;
-  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
   border: 2px solid white;
   width: 80vw;
   height: 80vh;
@@ -215,7 +215,7 @@ body #quizletCard h1 {
   font-size: 5vw;
   font-weight: 1;
   color: #fff;
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
 }
 body #quizletCard p {
   display: none;
@@ -223,14 +223,14 @@ body #quizletCard p {
   font-size: 3vw;
   font-weight: 1;
   color: #fff;
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
 }
 body #quizletCard button {
   font-size: 3vw;
   font-weight: 1;
   font-family: inherit;
   color: #fff;
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
   background-color: transparent;
   outline: none;
   padding: 1vw;
@@ -252,7 +252,7 @@ body #homePage div#header {
   margin-bottom: 5vh;
 }
 body #homePage div#header img {
-  filter: sepia(1) hue-rotate(260deg) saturate(5);
+  filter: sepia(1) hue-rotate(60deg) saturate(5);
   height: 100%;
   display: block;
   margin: 0 auto;
@@ -265,7 +265,7 @@ body #homePage div#header div#numFact {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
   animation: 0.5s ease-out 0s 1 flickerIn;
   animation-fill-mode: forwards;
 }
@@ -312,7 +312,7 @@ body #homePage div#todo {
   margin-top: 4vh;
   overflow-y: scroll;
   background-color: transparent;
-  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
   animation-fill-mode: forwards;
 }
 body #homePage div#todo div.task {
@@ -368,10 +368,10 @@ body #homePage div.carousel div.carouselImages .carouselImg .bookmark img {
   margin: 2px auto;
   height: 5vw;
   min-height: 50px;
-  filter: sepia(1) hue-rotate(260deg) saturate(5);
+  filter: sepia(1) hue-rotate(60deg) saturate(5);
 }
 body #homePage div.carousel div.carouselImages .carouselImg .bookmark p {
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
 }
 body #homePage div.carousel div.carouselImages .carouselImg.activeImg {
   opacity: 1;
@@ -404,8 +404,8 @@ body #homePage div.carousel div.carouselBtnPanel button.carouselBtn {
   font-family: inherit;
 }
 body #homePage div.carousel div.carouselBtnPanel button.carouselBtn.activeBtn {
-  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
 }
 @media only screen and (max-width: 600px) {
   body #homePage div.carousel div.carouselBtnPanel {
@@ -433,7 +433,7 @@ body #homePage div#audioPanel input[type=range] {
   -webkit-appearance: slider-vertical;
   /* Chromium */
   height: 60%;
-  accent-color: #e60073;
+  accent-color: #00ff00;
   filter: saturate(10);
 }
 body #homePage div#audioPanel .fa {
@@ -446,7 +446,7 @@ body #homePage div#audioPanel p {
   left: -10vh;
   width: 40vh;
   font-size: 3vh;
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00, 0 0 60px #00ff00, 0 0 70px #00ff00;
 }
 @media only screen and (max-width: 600px) {
   body #homePage div#audioPanel {
@@ -498,14 +498,14 @@ body #homePage div#audioProgress input {
   -webkit-appearance: none;
   outline: none;
   filter: saturate(10);
-  accent-color: #e60073;
-  background-color: rgba(230, 0, 115, 0.25);
+  accent-color: #00ff00;
+  background-color: rgba(0, 255, 0, 0.25);
 }
 body #homePage div#audioProgress input::-webkit-slider-thumb {
   -webkit-appearance: none;
   /* Override default look */
   appearance: none;
-  background-color: #e60073;
+  background-color: #00ff00;
   height: 1rem;
   width: 1rem;
 }
