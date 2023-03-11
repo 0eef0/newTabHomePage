@@ -2,7 +2,110 @@
 // questions split by '[New Question]'
 // terms and definitions split by '[Term/Def]'
 // Temp: `You have nothing to study at the moment[Term/Def]Enjoy it while it lasts, I'm sure it won't be long til something comes up...`
-let flashCards = `You have nothing to study at the moment[Term/Def]Enjoy it while it lasts, I'm sure it won't be long til something comes up..`;
+let flashCards = `To override a superclass method in a subclass, the subclass method ____.
+A. Must use a different method name.
+B. Must use the same method name and the same parameter types.
+C. Must use a different method name and the same parameter types.
+D. Must use a different method name and different parameter types.[Term/Def]B. must use the same method name and the same parameter types[New Question]public interface Sizable
+{
+ int LARGE_CHANGE = 100;
+ void changeSize();
+}
+Which of the following indicates how to use the constant LARGE_CHANGE in your program?
+A. LARGE-CHANGE
+B. Sizable.LARGE_CHANGE
+C. Sizable(LARGE_CHANGE)
+D. you cannot directly use the LARGE_CHANGE constant in your program[Term/Def]B. Sizable.LARGE_CHANGE[New Question]public class BankAccount implements Comparable<BankAccount>
+{
+ public int compareTo(T other)
+ {
+What is wrong with this code?
+A. the type parameter for the Comparable interface in the implements clause must be the same as the implementing class
+B. the type parameter for the Comparable interface in the implements clause must be the generic <T>
+C. The type parameter for the compareTo method must be the same as the implementing class
+D. The type parameter for the compareTo interface must be the generic <T>[Term/Def]C. the type parameter for the compareTo method must be the same as the implementing class[New Question]Which of the following statements about an interface is true?
+A. an interface has methods and instance variables
+B. an interface has methods but no instance variables
+C. an interface has neither methods nor instance variables
+D. an interface has instance variables but no methods[Term/Def]B. an interface has methods but no instance variables[New Question]Which of the following statements about a Java interface is NOT true?
+A. a Java interface defines a set of methods that are required
+B. a Java interface must contain more than one method
+C. a Java interface specifies behavior that a class will implement
+D. all methods in a Java interface must be abstract[Term/Def]B. a Java interface must contain more than one method[New Question]public interface Measurer
+{
+ double measure(__________ anObject);
+}
+Complete this code to allow the interface to handle all classes
+A. Class
+B. Object
+C. Any
+D. Void[Term/Def]B. Object[New Question]To test whether an object belongs to a particular type, use ___________.
+A. the "this" reserved word
+B. the "subclassOf" reserved word
+C. the "instanceOf" operator
+D. the "equals" method[Term/Def]C. the "instanceOf" operator[New Question]Which of the following statements about comparing objects is correct?
+A. the "equals" method is used to compare whether two references are to the same object
+B. The "equals" method is used to compare whether two objects have the same contents
+C. the "==" operator is used to compare whether two objects have the same contents
+D. the "equals" method and the "==" operator perform the same actions[Term/Def]B. the "equals" method is used to compare whether two objects have the same contents[New Question]Auto consumerAuto = new Auto(4, "gasoline");
+String s = consumerAuto.toString();
+Assume that the Auto class has not implemented its own toString() method. What value will "s" contain when this code is executed?
+A. "s" will contain the values of the instance variables in consumerAuto
+B. "s" will contain only the name of the consumerAuto object
+C. "s" will contain the name of the consumerAuto object followed by a hash code
+D. This code will not compile[Term/Def]C. "s" will contain the name of the consumerAuto object followed by a hash code[New Question]When declared as "protected", data in an object can be accessed by __________.
+A. only by that class's methods and by all of its subclasses
+B. only by that class's methods, by all of its subclasses, and by methods in classes within the same package
+C. only by that class's methods
+D. by any class[Term/Def]B. only by that class's methods, by all of its subclasses, and by methods in classes within the same package[New Question]Which of the following statements about classes is NOT true?
+A. you cannot create n object from a class declared with a keyword "final"
+B. you can override methods in a class declared with the keyword "final"
+C. you cannot extend a class declared with the keyword "final"
+D. you cannot create subclasses from a class declared with the keyword "final"[Term/Def]B. you can override methods in a class declared with the keyword "final[New Question]A class from which you cannot create objects is called a/an _________
+A. abstract class
+B. concrete class
+C. non-inheritance class
+D. superclass[Term/Def]A. abstract class[New Question]Which of the following statements about classes is true?
+A. you can create an object from a concrete class, but not from an abstract class
+B. you can create an object from an abstract class, but not from a concrete class
+C. you cannot have an object reference whose type is an abstract class
+D. you cannot create subclasses from abstract classes[Term/Def]A. you can create an object from a concrete class, but not from an abstract class[New Question]Which of the following is true regarding subclasses?
+A. a subclass has access to private instance variables of its superclass
+B. a subclass doe not have access to public instance variables of its superclass
+C. a subclass must specify the implicit parameter to use methods inherited from its superclass
+D. a subclass has no access to private instance variables of its superclass[Term/Def]D. a subclass has no access to private instance variables of its superclass[New Question]A class that represents a more specific entity in an inheritance hierarchy is called a/an _____________
+A. default class
+B. superclass
+C. subclass
+D. inheritance class[Term/Def]C. subclass[New Question]In each iteration, selection sort places which element in the correct location?
+A. the smallest in the array
+B. the largest element in the array
+C. a random element
+D. the smallest element not yet placed in prior iterations[Term/Def]D. the smallest element not yet placed in prior iterations[New Question]Choose the order of the following growth rates, from slowest to fastest: theta(n^3), theta(nlog(n)), theta(n^3/2), theta(2^n)[Term/Def]theta(n(log(n))), theta(n^3/2), theta(n^3), theta(2^n)[New Question]Assume we are using Quicksort to sort an array in ascending order. What can we conclude about the elements to the left of the currently placed pivot element?
+A. they are all less than or equal to the pivot element
+B. they are all greater than or equal to the pivot element
+C. they are all sorted
+D. none can equal the pivot element[Term/Def]A. they are all less than or equal to the pivot element[New Question]Given an ordered array with 15 elements, how many elements must be visited in the worst case of binary search?
+A. 2
+B. 8
+C. 4
+D. 3[Term/Def]C. 4[New Question]Suppose you wish to implement the Comparable interface to allow you Vehicle class to compare Auto objects only. Which of the following is the correct way to do this?
+A. public class Auto implements Comparable<Vehicle>
+B. public class Vehicle implements Comparable(Auto)
+C. public class Vehicle implements Comparable
+D. public class Vehicle implements Comparable<Auto>[Term/Def]D. public class Vehicle implements Comparable<Auto>[New Question]A queue is a collection that _________________.
+A. remembers the order of elements, and allows elements to be added and removed only at one end
+B. remembers the order to elements and allows elements to be inserted only at one end and removed only at the other end
+C. does not remember the order of elements, but allows elements to be added in any position
+D. remembers the order of elements and allows elements to be inserted in any position[Term/Def]B. remembers the order of elements and allows elements to be inserted only at one end and removed only at the other end[New Question]Assume you are using a doubly-linked list data structure with many notes. What is the minimum number of node references that are required to be modified to remover a node from the middle of the list? Consider the neighboring nodes
+A. 3
+B. 2
+C. 4
+D. 1[Term/Def]B. 2[New Question]You need to access values in the opposite order in which they were added (last in, first out) and not randomly. Which collection type should you use?
+A. hashtable
+B. map
+C. queue
+D. stack[Term/Def]D. stack[New Question]`;
 
 // DOM stuff
 const quizletCardDOM = document.getElementById('quizletCard');
