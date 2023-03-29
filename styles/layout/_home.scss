@@ -22,6 +22,10 @@ body {
     text-decoration: none;
   }
 
+  #player {
+    display: none;
+  }
+
   #quizletCard {
     display: flex;
     justify-content: center;

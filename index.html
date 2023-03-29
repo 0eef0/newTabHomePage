@@ -113,10 +113,9 @@
         <div id="audioPanel">
             <input type="range" min="1" max="100" value="25" id="volumeSlider" onchange="changeVolume(this.value)">
             <i class="fa fa-volume-up"></i>
-            <i class="fa fa-step-backward" style="margin-top: 3vh;" onclick="prevSong()"></i>
+            <i class="fa fa-step-backward" style="margin-top: 3vh;" onclick="player.previousVideo()"></i>
             <i class="fa fa-pause" id="musicToggle"></i>
-            <i class="fa fa-step-forward" onclick="nextSong()"></i>
-            <p id="songTitle">Song Title</p>
+            <i class="fa fa-step-forward" onclick="player.nextVideo()"></i>
         </div>
         <div id="audioProgress">
             <input type="range" min="0" max="100" value="0" id="progressBar">
@@ -133,9 +132,7 @@
         </div>
     </div>
 
-    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_l61-xQRkAwn7ZmwwBDeGuCxnofeHFrNzw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="z-index: 100000; position: fixed; top: 0; left: 0;"></iframe> -->
-
-    <audio id="ambientMusic" autoplay src=""></audio>
+    <div id="player"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
         integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>

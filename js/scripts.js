@@ -120,96 +120,61 @@ const musicToggleDOM = document.getElementById('musicToggle');
 const progressBarDOM = document.getElementById('progressBar');
 const valLinkDOM = document.getElementById('valLink');
 
-// from stack overflow, for shuffle
-//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-function shuffle(array) {
-  let currentIndex = array.length,  randomIndex;
+// Music Stuff
+// Documentation: https://developers.google.com/youtube/iframe_api_reference#:~:text=The%20IFrame%20player%20API%20lets,about%20the%20video%20being%20played.
+var tag = document.createElement('script');
 
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var player;
+function onPlayerReady(event) {
+    event.target.setVolume(25);
+    event.target.setShuffle(true);
+    event.target.playVideo();
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
-
-  return array;
-}
-
-// music stuff
-let playlist = ["Sono Chi No Sadame", "Bloody Stream", "Jotaro's Theme", "Kira's Theme", "Giorno's Theme", "Jolyne's Theme", "Josuke's Theme", "Stone Ocean", "Zankyou Sanka", "Bucciarati's Theme", "Torture Dance", "Fighting Gold", "End of the World", "Apex of the World", "Life at Garreg Mach", "Chasing Daybreak", "Unfulfilled", "Fodlan Winds", "Indomitable Will", "Edge of Dawn", "Mixed Nuts", "Comedy", "Therion the Thief", "A Settlement in the Red Bluffs", "The Cliftlands", "Stand Proud", "Daten", "Perfect Time"];
-playlist.forEach((song, index) => {
-    playlist[index] = {
-        title: song,
-        audio: `./assets/ambient${index+1}.mp3`
-    }
-});
-playlist = shuffle(playlist);
-
-$('#songTitle').toggle();
-let currSong = 0;
-const prevSong = () => {
-    if(audioDOM.currentTime <= 3) {
-        if(currSong > 0){
-            currSong--;
-        } else {
-            currSong = playlist.length-1;
-        }
-        audioDOM.src = playlist[currSong].audio;
-        setTimeout(() => {
-            progressBarDOM.max = Number(Math.floor(audioDOM.duration) * 100);
-        }, 100);
-        $('#songTitle').html(playlist[currSong].title).toggle(500).delay(3000).toggle(500);
-    } else {
-        audioDOM.currentTime = 0;
-    }
-}
-const nextSong = () => {
-    if(currSong < playlist.length-1){
-        currSong++;
-    } else {
-        currSong = 0;
-    }
-    audioDOM.src = playlist[currSong].audio;
     setTimeout(() => {
-        progressBarDOM.max = Number(Math.floor(audioDOM.duration) * 100);
-    }, 100);
-    $('#songTitle').html(playlist[currSong].title).toggle(500).delay(3000).toggle(500);
-};
+        searchBarDOM.focus();
+        progressBarDOM.max = Number(Math.floor(player.getDuration()));
+        progress = setInterval(() => {
+            progressBarDOM.value = player.getCurrentTime();
+        }, 10)
+    }, 200);
+}
 
 const changeVolume = (value) => {
-    audioDOM.volume = value / 100;
+     player.setVolume(value);
 };
-changeVolume(25);
 
+let isPlaying = true;
 musicToggleDOM.addEventListener('mousedown', () => {
-    if(!audioDOM.paused) {
-        audioDOM.pause();
+    if(isPlaying) {
+        player.pauseVideo();
         musicToggleDOM.classList.remove('fa-pause');
         musicToggleDOM.classList.add('fa-play');
     } else {
-        audioDOM.play();
+        player.playVideo();
         musicToggleDOM.classList.remove('fa-play');
         musicToggleDOM.classList.add('fa-pause');
     }
+    isPlaying = !isPlaying;
 });
 
 let progress;
 progressBarDOM.addEventListener('mousedown', () => {
-    audioDOM.pause();
+    player.pauseVideo();
     clearInterval(progress);
 });
 progressBarDOM.addEventListener('mouseup', () => {
-    audioDOM.currentTime = progressBarDOM.value / 100;
-    audioDOM.play();
+    player.seekTo(progressBarDOM.value);
+    player.playVideo();
     progress = setInterval(() => {
-        progressBarDOM.value = audioDOM.currentTime * 100;
+        progressBarDOM.value = player.getCurrentTime();
     }, 10)
-})
+});
+const changeProgress = () => {
+    progressBarDOM.max = Number(Math.floor(player.getDuration()));
+}
 
 
 // stolen from a project last year, does the typing into divs
@@ -244,18 +209,22 @@ const showQAnswer = () => {
     } else {
         quizletCardDOM.style.display = 'none';
         homePageDOM.style.display = 'flex';
-        audioDOM.src = playlist[0].audio;
-        $('#songTitle').html(playlist[0].title).toggle(500).delay(3000).toggle(500);
-        $('#ambientMusic').on('ended', () => {
-            nextSong();
-        })
-        setTimeout(() => {
-            searchBarDOM.focus();
-            progressBarDOM.max = Number(Math.floor(audioDOM.duration) * 100);
-            progress = setInterval(() => {
-                progressBarDOM.value = audioDOM.currentTime * 100;
-            }, 10)
-        }, 200);
+
+        player = new YT.Player('player', {
+            height: '0',
+            width: '0',
+            playerVars: {
+              'playsinline': 1,
+              'listType': 'playlist',
+              'list': 'PLkU8l1ITH2CWeiLe54tVHgfffCbekKOfl',
+              'loop': 1
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': changeProgress
+            }
+        });
+
         // reveals the secret to the fun fact
         setTimeout(() => {
             for(let i = 0; i < searchBarDOM.placeholder.length; i++){
@@ -334,7 +303,6 @@ const valDOM = document.getElementById('val');
 const getValData = async() => {
     try {
         const { data: { data } } = await axios.get('https://api.henrikdev.xyz/valorant/v3/matches/na/eef/8839');
-        console.log(data);
 
         valDOM.innerHTML += `<div class="match">
             <p class="mode" style="padding: 1rem">Mode</p>
@@ -356,14 +324,12 @@ const getValData = async() => {
 
             for(let j of players.all_players) {
                 if(j.name == "eef") {
-                    console.log(j);
                     curr.agent = j.assets.agent.small;
                     curr.stats = j.stats;
                     curr.econ = j.damage_made / (j.economy.spent.overall / 1000);
                     break;
                 }
             }
-            console.log(curr);
 
             valDOM.innerHTML += `<div class="match">
                 <p class="mode"><img src="${
