@@ -309,13 +309,13 @@ const getValData = async() => {
             <p class="agent" style="padding: 1rem">Agent</p>
             <p class="map">Map</p>
             <p class="score">Score</p>
-            <p class="econ">Econ</p>
+            <p class="results">Results</p>
             <p class="time" style="display:block">Time</p>
             <p class="kda" style="display:block">KDA</p>
         </div>`;
 
         for(let i of data) {
-            const { metadata, players, currenttier_patched: rank } = i;
+            const { metadata, players, currenttier_patched: rank, teams } = i;
             let curr = {};
             curr.map = metadata.map;
             curr.rounds = metadata.rounds_played;
@@ -326,7 +326,7 @@ const getValData = async() => {
                 if(j.name == "eef") {
                     curr.agent = j.assets.agent.small;
                     curr.stats = j.stats;
-                    curr.econ = j.damage_made / (j.economy.spent.overall / 1000);
+                    curr.results = (j.team == "Blue") ? `${teams.blue.rounds_won}-${teams.blue.rounds_lost}` : `${teams.red.rounds_won}-${teams.red.rounds_lost}`; 
                     break;
                 }
             }
@@ -344,7 +344,7 @@ const getValData = async() => {
                 <p class="agent"><img src="${ curr.agent }" /></p>
                 <p class="map">${ curr.map }</p>
                 <p class="score">${ Math.round(curr.stats.score / curr.rounds) }</p>
-                <p class="econ">${ Math.round(curr.econ) }</p>
+                <p class="results">${ curr.results }</p>
                 <p class="time"><span>${ Math.floor(curr.length / 1000 / 60 / 60) }:${ Math.round(curr.length / 1000 / 60) }</span> <span>(${ curr.rounds })</span></p>
                 <p class="kda"><span>${ curr.stats.kills }/${ curr.stats.deaths }/${ curr.stats.assists }</span> <span>(${ (Math.round(curr.stats.kills / curr.stats.deaths * 100) / 100).toFixed(2) })</span></p>
             </div>`;

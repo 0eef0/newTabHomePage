@@ -334,7 +334,7 @@ body #homePage div#val div.match p {
 body #homePage div#val div.match p.map {
   width: 15%;
 }
-body #homePage div#val div.match p.score, body #homePage div#val div.match p.econ, body #homePage div#val div.match p.time {
+body #homePage div#val div.match p.score, body #homePage div#val div.match p.results, body #homePage div#val div.match p.time {
   width: 13%;
 }
 body #homePage div#val div.match p.agent, body #homePage div#val div.match p.mode {
