@@ -105,7 +105,7 @@ D. 1[Term/Def]B. 2[New Question]You need to access values in the opposite order 
 A. hashtable
 B. map
 C. queue
-D. stack[Term/Def]D. stack[New Question]`;
+D. stack[Term/Def]D. stack`;
 
 // DOM stuff
 const quizletCardDOM = document.getElementById('quizletCard');
@@ -118,7 +118,7 @@ const audioDOM = document.getElementById('ambientMusic')
 const volumeSliderDOM = document.getElementById('volumeSlider');
 const musicToggleDOM = document.getElementById('musicToggle');
 const progressBarDOM = document.getElementById('progressBar');
-const todoLinkDOM = document.getElementById('todoLink');
+const valLinkDOM = document.getElementById('valLink');
 
 // from stack overflow, for shuffle
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
@@ -330,48 +330,78 @@ axios.request(numberOptions).then(function (response) {
 	console.error(error);
 });
 
-const toDoDOM = document.getElementById('todo');
-const getWork = async() => {
+const valDOM = document.getElementById('val');
+const getValData = async() => {
     try {
-        const { data: { task } } = await axios.get('https://roldan-todo-list.herokuapp.com/api/v1/tasks');
-        const sortedTasks = task.sort((a,b) => {return new Date(a.dueDate) - new Date(b.dueDate)});
-        for(let i = 0; i < sortedTasks.length; i++) {
-            const { task: taskName, dueTime, dueDate, subject } = task[i];
+        const { data: { data } } = await axios.get('https://api.henrikdev.xyz/valorant/v3/matches/na/eef/8839');
+        console.log(data);
 
-            const date = dueDate.split('-');
-            const time = dueTime.split(':');
-            const formattedTime = `${(time[0] > 12) ? time[0]-12 : parseInt(time[0])}:${time[1]}${(time[0] > 12) ? 'pm' : 'am'}`;
-            const formattedDate = (new Date(`${date[1]}/${date[2]}/${date[0]}`)).toLocaleDateString("en-US");
-            const today = (new Date()).toLocaleDateString("en-US");
-            const tomorrow = (new Date(Date.now() + 86400000)).toLocaleDateString("en-US");
-            const yesterday = (new Date(Date.now() - 86400000)).toLocaleDateString("en-US");
+        valDOM.innerHTML += `<div class="match">
+            <p class="mode" style="padding: 1rem">Mode</p>
+            <p class="agent" style="padding: 1rem">Agent</p>
+            <p class="map">Map</p>
+            <p class="score">Score</p>
+            <p class="econ">Econ</p>
+            <p class="time" style="display:block">Time</p>
+            <p class="kda" style="display:block">KDA</p>
+        </div>`;
 
-            toDoDOM.innerHTML += `
-            <div class="task">
-                <p class="subject">${subject}</p>
-                <p class="taskName">${taskName}</p>
-                <p class="taskDue">Due ${(formattedDate == today) ? 'today' : (formattedDate == tomorrow) ? 'tomorrow' : (formattedDate == yesterday) ? 'yesterday' : formattedDate} at ${formattedTime}</p>
+        for(let i of data) {
+            const { metadata, players, currenttier_patched: rank } = i;
+            let curr = {};
+            curr.map = metadata.map;
+            curr.rounds = metadata.rounds_played;
+            curr.mode = metadata.mode;
+            curr.length = metadata.game_length;
+
+            for(let j of players.all_players) {
+                if(j.name == "eef") {
+                    console.log(j);
+                    curr.agent = j.assets.agent.small;
+                    curr.stats = j.stats;
+                    curr.econ = j.damage_made / (j.economy.spent.overall / 1000);
+                    break;
+                }
+            }
+            console.log(curr);
+
+            valDOM.innerHTML += `<div class="match">
+                <p class="mode"><img src="${
+                    (curr.mode == "Unrated") ?
+                        "https://static.wikia.nocookie.net/valorant/images/d/d6/UI_Icon_Modes_Competitive.png/revision/latest?cb=20200805002134"
+                        :
+                        (curr.mode == "Swiftplay") ?
+                            "https://static.wikia.nocookie.net/valorant/images/9/98/Swiftplay.png/revision/latest?cb=20221206165230"
+                            :
+                            rank
+                }" title="${ curr.mode }" /></p>
+                <p class="agent"><img src="${ curr.agent }" /></p>
+                <p class="map">${ curr.map }</p>
+                <p class="score">${ Math.round(curr.stats.score / curr.rounds) }</p>
+                <p class="econ">${ Math.round(curr.econ) }</p>
+                <p class="time"><span>${ Math.floor(curr.length / 1000 / 60 / 60) }:${ Math.round(curr.length / 1000 / 60) }</span> <span>(${ curr.rounds })</span></p>
+                <p class="kda"><span>${ curr.stats.kills }/${ curr.stats.deaths }/${ curr.stats.assists }</span> <span>(${ (Math.round(curr.stats.kills / curr.stats.deaths * 100) / 100).toFixed(2) })</span></p>
             </div>`;
         }
     } catch (err) {
         console.error(err);
     }
 }
-getWork();
+getValData();
 
 let showWork = false;
-todoLinkDOM.addEventListener('mousedown',() => {
+valLink.addEventListener('mousedown',() => {
     if(!showWork) {
         document.getElementsByClassName('carousel')[0].style.display = 'none';
-        toDoDOM.style.display = 'block';
-        toDoDOM.style.animation = '0.5s ease-out 0s 1 flickerIn';
-        todoLinkDOM.innerHTML = 'B<br>O<br>O<br>K<br>M<br>A<br>R<br>K<br>S';
+        valDOM.style.display = 'block';
+        valDOM.style.animation = '0.5s ease-out 0s 1 flickerIn';
+        valLink.innerHTML = 'B<br>O<br>O<br>K<br>M<br>A<br>R<br>K<br>S';
         showWork = true;
     } else {
         document.getElementsByClassName('carousel')[0].style.display = 'block';
         document.getElementsByClassName('carousel')[0].style.animation = '0.5s ease-out 0s 1 flickerIn';
-        toDoDOM.style.display = 'none';
-        todoLinkDOM.innerHTML = 'T<br>O<br>D<br>O<br>-<br>L<br>I<br>S<br>T';
+        valDOM.style.display = 'none';
+        valLink.innerHTML = 'V<br>A<br>L<br>O<br>R<br>A<br>N<br>T';
         showWork = false;
     }
 })
