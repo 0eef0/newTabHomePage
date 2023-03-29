@@ -294,12 +294,12 @@ let numberOptions = {
 axios.request(numberOptions).then(function (response) {
 	const { text, number } = response.data;
     fact = `Stick me says: ${number} is ${text}`;
-
 }).catch(function (error) {
 	console.error(error);
 });
 
 const valDOM = document.getElementById('val');
+let kd = 0;
 const getValData = async() => {
     try {
         const { data: { data } } = await axios.get('https://api.henrikdev.xyz/valorant/v3/matches/na/eef/8839');
@@ -348,7 +348,10 @@ const getValData = async() => {
                 <p class="time"><span>${ Math.floor(curr.length / 1000 / 60 / 60) }:${ Math.round(curr.length / 1000 / 60) }</span> <span>(${ curr.rounds })</span></p>
                 <p class="kda"><span>${ curr.stats.kills }/${ curr.stats.deaths }/${ curr.stats.assists }</span> <span>(${ (Math.round(curr.stats.kills / curr.stats.deaths * 100) / 100).toFixed(2) })</span></p>
             </div>`;
+            kd += curr.stats.kills / curr.stats.deaths;
         }
+        kd /= 5;
+        if(Math.random() > 0.5) fact = `Stick me says: ${ (Math.round(kd * 100) / 100).toFixed(2) } KD in your last five games? Kinda trash ngl...`;
     } catch (err) {
         console.error(err);
     }
