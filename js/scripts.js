@@ -299,6 +299,8 @@ axios.request(numberOptions).then(function (response) {
 });
 
 const valDOM = document.getElementById('val');
+let kills = 0;
+let deaths = 0;
 let kd = 0;
 const getValData = async() => {
     try {
@@ -346,12 +348,13 @@ const getValData = async() => {
                 <p class="score">${ Math.round(curr.stats.score / curr.rounds) }</p>
                 <p class="results">${ curr.results }</p>
                 <p class="time"><span>${ Math.floor(curr.length / 1000 / 60 / 60) }:${ Math.round(curr.length / 1000 / 60) }</span> <span>(${ curr.rounds })</span></p>
-                <p class="kda"><span>${ curr.stats.kills }/${ curr.stats.deaths }/${ curr.stats.assists }</span> <span>(${ (Math.round(curr.stats.kills / curr.stats.deaths * 100) / 100).toFixed(2) })</span></p>
+                <p class="kda"><span>${ curr.stats.kills }/${ curr.stats.deaths }/${ curr.stats.assists }</span> <span>(${ (curr.stats.deaths != 0) ? (Math.round(curr.stats.kills / curr.stats.deaths * 100) / 100).toFixed(2) : curr.stats.kills })</span></p>
             </div>`;
-            kd += curr.stats.kills / curr.stats.deaths;
+            kills += curr.stats.kills;
+            deaths += curr.stats.deaths;
         }
-        kd /= 5;
-        if(Math.random() > 0.5) fact = `Stick me says: ${ (Math.round(kd * 100) / 100).toFixed(2) } KD in your last five games? Kinda trash ngl...`;
+        kd = kills / deaths;
+        if(Math.random() > 0.5) fact = `Stick me says: ${ (Math.round(kd * 100) / 100).toFixed(2) } KD in your last five games? ${((Math.round(kd * 100) / 100).toFixed(2) >= 1.5) ? "I guess that's good." : ((Math.round(kd * 100) / 100).toFixed(2) >= 1) ? "That's passable..." : "Kinda trash ngl..."}`;
     } catch (err) {
         console.error(err);
     }
