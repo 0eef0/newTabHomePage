@@ -341,7 +341,7 @@ const getValData = async() => {
                         (curr.mode == "Swiftplay") ?
                             "https://static.wikia.nocookie.net/valorant/images/9/98/Swiftplay.png/revision/latest?cb=20221206165230"
                             :
-                            rank
+                            "https://assets.stickpng.com/images/5a2411fc6003f508dd5d5b37.png"
                 }" title="${ curr.mode }" /></p>
                 <p class="agent"><img src="${ curr.agent }" /></p>
                 <p class="map">${ curr.map }</p>

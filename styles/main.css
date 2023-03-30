@@ -342,7 +342,7 @@ body #homePage div#val div.match p.score, body #homePage div#val div.match p.res
   width: 13%;
 }
 body #homePage div#val div.match p.agent, body #homePage div#val div.match p.mode {
-  width: 12%;
+  width: 11%;
   text-align: center;
   padding: 0;
 }
