@@ -244,7 +244,8 @@ const getValData = async() => {
                 <p class="map">${ curr.map }</p>
                 <p class="score">${ Math.round(curr.stats.score / curr.rounds) }</p>
                 <p class="results">${ curr.results }</p>
-                <p class="time"><span>${ Math.floor(curr.length / 1000 / 60 / 60) }:${ Math.round(curr.length / 1000 / 60) }</span> <span>(${ curr.rounds })</span></p>
+                <p class="time"><span>
+                ${ Math.floor(curr.length / 60 / 60) }:${ Math.round(curr.length / 60).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) }</span> <span>(${ curr.rounds })</span></p>
                 <p class="kda"><span>${ curr.stats.kills }/${ curr.stats.deaths }/${ curr.stats.assists }</span> <span>(${ (curr.stats.deaths != 0) ? (Math.round(curr.stats.kills / curr.stats.deaths * 100) / 100).toFixed(2) : curr.stats.kills })</span></p>
             </div>`;
             kills += curr.stats.kills;
