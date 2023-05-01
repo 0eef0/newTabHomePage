@@ -18,14 +18,14 @@
     </div>
 
     <div id="homePage">
-        <div id="header">
+        <div id="header" class="searchUI">
             <img src="./assets/logo.png" alt="Logo">
         </div>
-        <form action="http://google.com/search">
+        <form action="http://google.com/search" class="searchUI">
             <input type="text" id="searchBar" name="q" autocomplete="off" spellcheck="false" placeholder="Search" autofocus>
         </form>
-        <div id="val" style="display: none"></div>
-        <div class="carousel">
+        <div id="val" style="display: none" class="searchUI"></div>
+        <div class="carousel searchUI">
             <div class="carouselImages">
                 <div class="carouselImg activeImg">
                     <div class="bookmark">
@@ -116,11 +116,12 @@
             <i class="fa fa-step-backward" style="margin-top: 3vh;" onclick="player.previousVideo()"></i>
             <i class="fa fa-pause" id="musicToggle"></i>
             <i class="fa fa-step-forward" onclick="player.nextVideo()"></i>
+            <i class="fa fa-eye" onclick="changeMode()"></i>
         </div>
         <div id="audioProgress">
             <input type="range" min="0" max="100" value="0" id="progressBar">
         </div>
-        <div id="valLink">
+        <div id="valLink" class="searchUI">
             V <br>
             A <br>
             L <br>

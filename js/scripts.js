@@ -265,17 +265,48 @@ getValData();
 
 let showWork = false;
 valLink.addEventListener('mousedown',() => {
+    changeDisplay();
+    showWork = !showWork;
+});
+
+const changeDisplay = () => {
     if(!showWork) {
         document.getElementsByClassName('carousel')[0].style.display = 'none';
         valDOM.style.display = 'block';
         valDOM.style.animation = '0.5s ease-out 0s 1 flickerIn';
         valLink.innerHTML = 'B<br>O<br>O<br>K<br>M<br>A<br>R<br>K<br>S';
-        showWork = true;
     } else {
         document.getElementsByClassName('carousel')[0].style.display = 'block';
         document.getElementsByClassName('carousel')[0].style.animation = '0.5s ease-out 0s 1 flickerIn';
         valDOM.style.display = 'none';
         valLink.innerHTML = 'V<br>A<br>L<br>O<br>R<br>A<br>N<br>T';
-        showWork = false;
     }
-})
+}
+
+// Below is the function that changes the UI element visibility
+let mode = Number(localStorage.getItem("currBrowserMode"));
+const changeMode = () => {
+    switch (mode) {
+        case 0:
+            document.getElementById('player').style.display = 'block';
+            mode++;
+            break;
+        case 1:
+            for(let i of document.getElementsByClassName('searchUI')) {
+                i.style.display = 'none';
+            }
+            mode++;
+            break;
+        default:
+            document.getElementById('player').style.display = 'none';
+            for(let i of document.getElementsByClassName('searchUI')) {
+                i.style.display = 'flex';
+            }
+            changeDisplay();
+            mode = 0;
+            break;
+    }
+    localStorage.setItem("currBrowserMode", mode);
+}
+mode--;
+changeMode();
