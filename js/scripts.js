@@ -108,13 +108,17 @@ const showQAnswer = () => {
         homePageDOM.style.display = 'flex';
 
         player = new YT.Player('player', {
-            height: '0',
-            width: '0',
+            height: window.innerHeight,
+            width: window.innerWidth,
             playerVars: {
               'playsinline': 1,
               'listType': 'playlist',
-              'list': 'PLqRzW0BeLL56dbOIs3ern2_7U2P4KbtNI',
-              'loop': 1
+              'list': 'PLD1OJzc3zWEwY6pX1lhKbZxyj0xSy8Z16',
+              'loop': 1,
+              'controls': 0,
+              'rel': 0,
+              'showInfo': 0,
+              'cc_load_policy': 0
             },
             events: {
                 'onReady': onPlayerReady,
