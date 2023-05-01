@@ -200,6 +200,9 @@ body #player {
   top: 0;
   left: 0;
 }
+body #player .html5-video-player .caption-visual-line .ytp-caption-segment:last-child, body #player .ytp-caption-window-container {
+  display: none !important;
+}
 body #quizletCard {
   display: flex;
   justify-content: center;

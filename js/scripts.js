@@ -118,7 +118,9 @@ const showQAnswer = () => {
               'controls': 0,
               'rel': 0,
               'showInfo': 0,
-              'cc_load_policy': 0
+              'cc_load_policy': 3,
+              'iv_load_policy': 3,
+              'modestbranding': 0
             },
             events: {
                 'onReady': onPlayerReady,
