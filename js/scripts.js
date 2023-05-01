@@ -302,7 +302,12 @@ const changeMode = () => {
             for(let i of document.getElementsByClassName('searchUI')) {
                 i.style.display = 'flex';
             }
-            changeDisplay();
+            
+            document.getElementsByClassName('carousel')[0].style.display = 'block';
+            document.getElementsByClassName('carousel')[0].style.animation = '0.5s ease-out 0s 1 flickerIn';
+            valDOM.style.display = 'none';
+            valLink.innerHTML = 'V<br>A<br>L<br>O<br>R<br>A<br>N<br>T';
+
             mode = 0;
             break;
     }
