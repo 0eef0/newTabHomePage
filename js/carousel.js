@@ -1,4 +1,4 @@
-let currIndex = 0;
+let currIndex = 0 || localStorage.getItem('currBookmarks');
 
 let pressed = false;
 
@@ -20,7 +20,9 @@ const carouselChange = (index) => {
     images[index].classList.add('activeImg');
 
     currIndex = index;
+    localStorage.setItem('currBookmarks', currIndex);
 };
+carouselChange(currIndex);
 
 const nextImg = () => {
     pressed = true;
