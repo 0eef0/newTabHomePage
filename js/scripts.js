@@ -73,6 +73,11 @@ const changeProgress = () => {
     progressBarDOM.max = Number(Math.floor(player.getDuration()));
 }
 
+window.addEventListener('resize', () => {
+    document.getElementsByTagName('iframe')[0].width = window.innerWidth;
+    document.getElementsByTagName('iframe')[0].height = window.innerHeight;
+});
+
 
 // stolen from a project last year, does the typing into divs
 function printLetterByLetter(destination, message, speed){
