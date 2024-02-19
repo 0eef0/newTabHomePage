@@ -244,7 +244,7 @@ const getValData = async() => {
             valDOM.innerHTML += `<div class="match">
                 <p class="mode"><img src="${
                     (curr.mode == "Unrated") ?
-                        "https://static.wikia.nocookie.net/valorant/images/d/d6/UI_Icon_Modes_Competitive.png/revision/latest?cb=20200805002134"
+                        "https://static.wikia.nocookie.net/valorant/images/9/9b/Plant_Defuse_Mode.png/revision/latest/thumbnail/width/360/height/360?cb=20200805002134"
                         :
                         (curr.mode == "Swiftplay") ?
                             "https://static.wikia.nocookie.net/valorant/images/9/98/Swiftplay.png/revision/latest?cb=20221206165230"
