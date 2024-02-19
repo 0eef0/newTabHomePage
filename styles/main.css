@@ -183,14 +183,9 @@ body {
 body {
   background-color: black;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='348' height='348' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23333333' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23333333'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
-  -webkit-user-select: none;
-  /* Safari */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* IE10+/Edge */
-  user-select: none;
-  /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */ /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 body a,
 body a:visited {
@@ -242,11 +237,17 @@ body #quizletCard button {
   color: #fff;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
   outline: none;
   padding: 1vw;
   border: 2px solid white;
   transition: width 1s;
+}
+body #quizletCard button.target {
+  border-radius: 50%;
+  width: 5vw;
+  height: 5vw;
 }
 body #homePage {
   display: none;
@@ -278,7 +279,8 @@ body #homePage div#header div#numFact {
   align-items: center;
   box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
   animation: 0.5s ease-out 0s 1 flickerIn;
   animation-fill-mode: forwards;
 }
@@ -306,7 +308,8 @@ body #homePage form {
 }
 body #homePage form input[type=text] {
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
   height: 100%;
   width: 100%;
   outline: none;
@@ -326,7 +329,8 @@ body #homePage div#val {
   margin-top: 4vh;
   overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
   box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
   animation-fill-mode: forwards;
 }
@@ -344,6 +348,7 @@ body #homePage div#val div.match p {
   padding: 1rem;
   text-align: center;
   font-size: 2rem;
+  min-width: -moz-max-content;
   min-width: max-content;
   height: 100%;
 }
@@ -380,7 +385,8 @@ body #homePage div#val div.match:first-child {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
   z-index: 100;
 }
 body #homePage div.carousel {
@@ -443,7 +449,8 @@ body #homePage div.carousel div.carouselBtnPanel button.carouselBtn {
   height: auto;
   font-size: 2.5vw;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
   border: 2px solid white;
   color: #fff;
   transition: box-shadow 1s, text-shadow 1s;
@@ -475,11 +482,11 @@ body #homePage div#audioPanel {
   justify-content: center;
   align-content: space-between;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
 }
 body #homePage div#audioPanel input[type=range] {
-  -webkit-appearance: slider-vertical;
-  /* Chromium */
+  -webkit-appearance: slider-vertical; /* Chromium */
   height: 60%;
   accent-color: #fff;
   filter: saturate(10);
@@ -507,8 +514,7 @@ body #homePage div#audioPanel p {
     align-items: center;
   }
   body #homePage div#audioPanel input[type=range] {
-    -webkit-appearance: slider-horizontal;
-    /* Chromium */
+    -webkit-appearance: slider-horizontal; /* Chromium */
     width: 70%;
     height: unset;
     order: 2;
@@ -517,7 +523,7 @@ body #homePage div#audioPanel p {
     order: 1;
   }
   body #homePage div#audioPanel .fa-play,
-body #homePage div#audioPanel .fa-pause {
+  body #homePage div#audioPanel .fa-pause {
     order: 4;
   }
   body #homePage div#audioPanel .fa-step-backward {
@@ -550,8 +556,7 @@ body #homePage div#audioProgress input {
   background-color: rgba(255, 255, 255, 0.25);
 }
 body #homePage div#audioProgress input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  /* Override default look */
+  -webkit-appearance: none; /* Override default look */
   appearance: none;
   background-color: #fff;
   height: 1rem;
@@ -571,7 +576,8 @@ body #homePage div#valLink {
   font-size: 3.5vh;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
 }
 @media only screen and (max-width: 600px) {
   body #homePage div#valLink {
@@ -600,6 +606,4 @@ body #homePage div#valLink {
   10%, 30%, 50%, 100% {
     opacity: 0;
   }
-}
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

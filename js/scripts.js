@@ -92,22 +92,46 @@ function printLetterByLetter(destination, message, speed){
 }
 
 // code for flashcard at beginning
-flashCards = flashCards.split('[New Question]');
+// flashCards = flashCards.split('[New Question]');
 
-for(let i = 0; i < flashCards.length; i++) {
-    flashCards[i] = flashCards[i].split('[Term/Def]');
-}
+// for(let i = 0; i < flashCards.length; i++) {
+//     flashCards[i] = flashCards[i].split('[Term/Def]');
+// }
 
-let quizletQ = flashCards[Math.floor(Math.random() * flashCards.length)];
-quizletQDOM.innerHTML = quizletQ[0];
+// let quizletQ = flashCards[Math.floor(Math.random() * flashCards.length)];
+quizletQDOM.innerHTML = 'AimLab Time!';//quizletQ[0];
 
-let answerShowing = false;
+let targets = 0;
+let aimTimer;
+let aimTime = 0;
 const showQAnswer = () => {
-    if(!answerShowing) {
-        quizletADOM.style.display = 'block';
+    if(targets == 0) {
+        quizletBtnDOM.className = 'target';
+        quizletBtnDOM.textContent = '';
+        quizletBtnDOM.style.position = 'absolute';
+        quizletBtnDOM.style.top = `${Math.random() * 70 + 10}vh`;
+        quizletBtnDOM.style.left = `${Math.random() * 70 + 10}vw`;
+        aimTimer = setInterval(() => {
+            aimTime++;
+            quizletQDOM.innerHTML = aimTime;
+        }, 1000);
+        targets++;
+    } else if(targets < 10) {
+        // quizletADOM.style.display = 'block';
+        // quizletBtnDOM.textContent = 'Proceed to new tab';
+        // printLetterByLetter('quizletA', quizletQ[1], 2500/quizletQ[1].length);
+        quizletBtnDOM.style.top = `${Math.random() * 70 + 10}vh`;
+        quizletBtnDOM.style.left = `${Math.random() * 70 + 10}vw`;
+        targets++;
+        console.log(targets);
+    } else if(targets == 10) {
+        clearInterval(aimTimer);
+        quizletQDOM.innerHTML = `You got ${aimTime} seconds, good job`;
+        quizletBtnDOM.className = '';
         quizletBtnDOM.textContent = 'Proceed to new tab';
-        printLetterByLetter('quizletA', quizletQ[1], 2500/quizletQ[1].length);
-        answerShowing = true;
+        quizletBtnDOM.style.top = '75%';
+        quizletBtnDOM.style.left = 'unset';
+        targets++;
     } else {
         quizletCardDOM.style.display = 'none';
         homePageDOM.style.display = 'flex';

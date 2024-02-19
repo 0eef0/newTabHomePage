@@ -73,6 +73,12 @@ body {
       padding: 1vw;
       border: $border-white;
       transition: width 1s;
+
+      &.target {
+        border-radius: 50%;
+        width: 5vw;
+        height: 5vw;
+      }
     }
   }
 
