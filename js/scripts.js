@@ -113,8 +113,8 @@ const showQAnswer = () => {
         quizletBtnDOM.style.left = `${Math.random() * 70 + 10}vw`;
         aimTimer = setInterval(() => {
             aimTime++;
-            quizletQDOM.innerHTML = aimTime;
-        }, 1000);
+            quizletQDOM.innerHTML = aimTime / 100;
+        }, 10);
         targets++;
     } else if(targets < 10) {
         // quizletADOM.style.display = 'block';
@@ -126,11 +126,19 @@ const showQAnswer = () => {
         console.log(targets);
     } else if(targets == 10) {
         clearInterval(aimTimer);
-        quizletQDOM.innerHTML = `You got ${aimTime} seconds, good job`;
+        quizletQDOM.innerHTML = `You got ${aimTime / 100} seconds`;
+        quizletADOM.style.display = 'block';
+        if(aimTime < localStorage.getItem('aimHighScore')) {
+            localStorage.setItem('aimHighScore', aimTime);
+            quizletADOM.textContent = `New High Score! ${aimTime / 100} seconds`;
+        } else {
+            quizletADOM.textContent = `High Score: ${localStorage.getItem('aimHighScore') / 100} seconds`;
+        }
         quizletBtnDOM.className = '';
         quizletBtnDOM.textContent = 'Proceed to new tab';
-        quizletBtnDOM.style.top = '75%';
+        quizletBtnDOM.style.top = '77.5%';
         quizletBtnDOM.style.left = 'unset';
+        quizletBtnDOM.style.display = 'block';
         targets++;
     } else {
         quizletCardDOM.style.display = 'none';

@@ -55,6 +55,8 @@ body {
     }
     p {
       display: none;
+      position: absolute;
+      top: 45%;
       width: 100%;
       font-size: 3vw;
       font-weight: 1;
@@ -73,6 +75,7 @@ body {
       padding: 1vw;
       border: $border-white;
       transition: width 1s;
+      top: 75.5%;
 
       &.target {
         border-radius: 50%;
