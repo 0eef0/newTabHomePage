@@ -107,7 +107,6 @@ let aimTime = 0;
 const showQAnswer = () => {
     if(targets == 0) {
         quizletBtnDOM.className = 'target';
-        quizletBtnDOM.textContent = '';
         quizletBtnDOM.style.position = 'absolute';
         quizletBtnDOM.style.top = `${Math.random() * 70 + 10}vh`;
         quizletBtnDOM.style.left = `${Math.random() * 70 + 10}vw`;
@@ -116,6 +115,7 @@ const showQAnswer = () => {
             quizletQDOM.innerHTML = aimTime / 100;
         }, 10);
         targets++;
+        quizletBtnDOM.textContent = targets;
     } else if(targets < 10) {
         // quizletADOM.style.display = 'block';
         // quizletBtnDOM.textContent = 'Proceed to new tab';
@@ -123,7 +123,7 @@ const showQAnswer = () => {
         quizletBtnDOM.style.top = `${Math.random() * 70 + 10}vh`;
         quizletBtnDOM.style.left = `${Math.random() * 70 + 10}vw`;
         targets++;
-        console.log(targets);
+        quizletBtnDOM.textContent = targets;
     } else if(targets == 10) {
         clearInterval(aimTimer);
         quizletQDOM.innerHTML = `You got ${aimTime / 100} seconds`;
