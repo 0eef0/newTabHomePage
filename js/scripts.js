@@ -121,7 +121,7 @@ const showQAnswer = () => {
         for(let i of scores) avg += i;
         avg /= scores.length;
 
-        quizletQDOM.innerHTML = `You got ${aimTime / 100} seconds`;
+        quizletQDOM.innerHTML = `You got ${(aimTime / 100).toFixed(2)} seconds`;
         quizletADOM.style.display = 'block';
         if(aimTime < localStorage.getItem('aimHighScore')) {
             localStorage.setItem('aimHighScore', aimTime);
