@@ -91,7 +91,7 @@ let aimTimer;
 let aimTime = 0;
 let { currDate, scores } = JSON.parse(localStorage.getItem('aimDailyScores'));
 
-if(currDate > new Date().getDate()) {
+if(currDate < new Date().getDate()) {
     currDate++;
     scores = [];
 }
