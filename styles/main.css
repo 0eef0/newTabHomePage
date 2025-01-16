@@ -208,21 +208,24 @@ body #quizletCard {
   align-content: space-between;
   text-align: center;
   flex-wrap: wrap;
-  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
-  border: 2px solid white;
   width: 80vw;
   height: 80vh;
   margin: 10vh 10vw;
   padding: 1vh;
 }
-body #quizletCard h1 {
+body #quizletCard div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+body #quizletCard div h1 {
   width: 100%;
   font-size: 3vw;
   font-weight: 1;
   color: #fff;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
 }
-body #quizletCard p {
+body #quizletCard div p {
   display: none;
   position: absolute;
   top: 45%;
@@ -231,6 +234,12 @@ body #quizletCard p {
   font-weight: 1;
   color: #fff;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+}
+body #quizletCard div img {
+  width: 30%;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+  border: 2px solid white;
+  filter: grayscale(1);
 }
 body #quizletCard button {
   font-size: 3vw;
@@ -243,6 +252,7 @@ body #quizletCard button {
           backdrop-filter: blur(6px);
   outline: none;
   padding: 1vw;
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
   border: 2px solid white;
   transition: width 1s;
   top: 75.5%;

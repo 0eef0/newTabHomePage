@@ -11,6 +11,78 @@ const musicToggleDOM = document.getElementById('musicToggle');
 const progressBarDOM = document.getElementById('progressBar');
 const valLinkDOM = document.getElementById('valLink');
 
+// Wisdom courtesy of Dr. Lynn Robert Carter
+const wisdom = [
+    `"Some of the sexiest movies don't show any boobs or anything else"`, 
+    `"what's you or what's the computer... it's the future"`, 
+    `"Breathe in, breathe out.  You're gonna die!"`, 
+    `"We need to understand the pots of gold out there t… once you cross over that line, there be dragons."`, 
+    `"If you think this field is all fun and games, it is"`, 
+    `"mental midgets"`, 
+    `"press the space bar with your toe"`, 
+    `"Whoaaa that's freaky!"`, 
+    `"i don't trust any institution; i trust individuals"`, 
+    `"i encourage you all to get good at python, just like chinese and spanish"`, 
+    `"some of you are going to find out how little this professor actually knows"`, 
+    `"one plus one is three for significantly large values of one"`, 
+    `"One day in India I was given a lovely silver coin"`, 
+    `"it's real easy to make children"`, 
+    `"I was just trying to get my golf stroke improved, …k on this thing, and up comes this piece of porn!"`, 
+    `"Oh, finally, a human!"`, 
+    `"My flight is about to departing."`, 
+    `"I’ll share my notes for you for $100"`, 
+    `"I'm not buying new tools for you"`, 
+    `"This elephant sniffs on you and…"`, 
+    `"Have you ever been blessed by an Indian Elephant?"`, 
+    `"How many counting programs do you think have been written?"`, 
+    `"Granddad I love you dearly, but I'm more interested in art"`, 
+    `"It's interesting how the brain says one thing and the fingers say something else"`, 
+    `"That's a stupid thing to say, miss!"`,
+
+    `"I want you to pick that kid up and put them on your knee"`, 
+    `"Cybersecurity people are like the police -- They c…ch of anything until the CRIME has been committed"`, 
+    `"If you're here to get rich, lemme suggest you something- INVESTMENT BANKING"`, 
+    `"Java doesn't have an 2-dimensional Array. It has an Array of Arrays"`, 
+    `"Tomorrow becomes today and there is a new tomorrow"`, 
+    `"Now instead of a big green bar, now we have a big red bar"`, 
+    `"I’m much better, maybe because I am old man, in the morning than in the afternoon"`, 
+    `"Professor Carter made me change it, it’s his fault now"`, 
+    `"for two weeks, I debugged a program"`, 
+    `"Mud brick buildings don't survive earthquakes very well... The same is true with software"`, 
+    `"you dont shoot the rocket to where it is today"`, 
+    `"this is the only socializing i do"`, 
+    `"leg is broken, brain isn't broken"`, 
+    `"You can’t go to Lowe’s or Home Depot and buy cybersecurity fluid"`, 
+    `"Whatever you do, do not just make stuff up to get to the required number of pages"`, 
+    `"It's related to the important things that I think is important"`, 
+    `"if you're building a 100 story house, you need to …n build up... we gotta do the same with education"`, 
+    `"as long as everything was working, it worked"`, 
+    `"it's amazing how many mothers die"`, 
+    `"i got another software wacko here"`, 
+    `"You aren't working hard enough"`, 
+    `"the scrum master is whispering in your ear that you missed some other responsibilities"`, 
+    `"Bending in to try to get close to the ball"`, 
+    `"Recognize you're human - good morning"`, 
+    `"I have no doubt there is a nobel prize winner in this room, but it ain't me"`, 
+    `"I see we're gonna play chicken?"`, 
+    `"first of all, i'm not like other professors, thoug…enured professor, never been on the tenured track"`, 
+    `"I guess nobody read the thing I posted about Planning Poker"`, 
+    `"I've been to some really weird places; who's been to Nepal?"`, 
+    `"you better plan to get only 4 hours of work out of an 8 hour day"`, 
+    `"this professor even at this old age has the ability to blush"`, 
+    `"The body has certain needs"`, 
+    `"close your eyes, hold your fingers out in front of you, and in ten seconds the drawing is finished"`, 
+    `"My ego isn't going to be damaged"`, 
+    `"You will get bit in the midterm"`, 
+    `"They write another simulator to simulate the simulator that the other simulator is running on"`, 
+    `"We need to be more like China"`, 
+    `"They've had some truly glorious disasters. And by glorious I don't mean positive!"`, 
+    `"'I'm sorry you were in an accident', like you really care."`
+];
+
+console.log(wisdom);
+
+
 // Music Stuff
 // Documentation: https://developers.google.com/youtube/iframe_api_reference#:~:text=The%20IFrame%20player%20API%20lets,about%20the%20video%20being%20played.
 var tag = document.createElement('script');
@@ -85,61 +157,10 @@ function printLetterByLetter(destination, message, speed){
     }, speed);
 }
 
-quizletQDOM.innerHTML = 'AimLab Time!';
-let targets = 0;
-let aimTimer;
-let aimTime = 0;
-let { currDate, scores } = JSON.parse(localStorage.getItem('aimDailyScores'));
-
-if(currDate < new Date().getDate()) {
-    currDate++;
-    scores = [];
-}
+const quote = wisdom[Math.floor(Math.random() * (wisdom.length))];
+quizletQDOM.innerHTML = quote + "<br><br>-Dr. Lynn Robert Carter";
 
 const showQAnswer = () => {
-    if(targets == 0) {
-        quizletBtnDOM.className = 'target';
-        quizletBtnDOM.style.position = 'absolute';
-        quizletBtnDOM.style.top = `${Math.random() * 70 + 10}vh`;
-        quizletBtnDOM.style.left = `${Math.random() * 70 + 10}vw`;
-        aimTimer = setInterval(() => {
-            aimTime++;
-            quizletQDOM.innerHTML = (aimTime / 100).toFixed(2);
-        }, 10);
-        targets++;
-        quizletBtnDOM.textContent = targets;
-    } else if(targets < 10) {
-        quizletBtnDOM.style.top = `${Math.random() * 70 + 10}vh`;
-        quizletBtnDOM.style.left = `${Math.random() * 70 + 10}vw`;
-        targets++;
-        quizletBtnDOM.textContent = targets;
-    } else if(targets == 10) {
-        clearInterval(aimTimer);
-
-        scores.push(aimTime);
-        let avg = 0;
-        for(let i of scores) avg += i;
-        avg /= scores.length;
-
-        quizletQDOM.innerHTML = `You got ${(aimTime / 100).toFixed(2)} seconds`;
-        quizletADOM.style.display = 'block';
-        if(aimTime < localStorage.getItem('aimHighScore')) {
-            localStorage.setItem('aimHighScore', aimTime);
-            quizletADOM.innerHTML = `New High Score! ${(aimTime / 100).toFixed(2)} seconds`;
-        } else {
-            quizletADOM.innerHTML = `High Score: ${(localStorage.getItem('aimHighScore') / 100).toFixed(2)} seconds`;
-        }
-        quizletADOM.innerHTML += `<br>Daily Average: ${ (avg / 100).toFixed(2) }`;
-        quizletBtnDOM.className = '';
-        quizletBtnDOM.textContent = 'Proceed to new tab';
-        quizletBtnDOM.style.top = '77.5%';
-        quizletBtnDOM.style.left = 'unset';
-        quizletBtnDOM.style.display = 'block';
-        targets++;
-
-        localStorage.setItem('aimDailyScores', JSON.stringify({ currDate, scores }));
-        console.log(JSON.stringify(localStorage.getItem('aimDailyScores')));
-    } else {
         quizletCardDOM.style.display = 'none';
         homePageDOM.style.display = 'flex';
 
@@ -198,7 +219,6 @@ const showQAnswer = () => {
             }
         }, 10000 + 100 * searchBarDOM.placeholder.length);
     }
-}
 
 // puts the random number fact on screen in logo is clicked
 let fact = '';

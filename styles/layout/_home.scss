@@ -40,12 +40,14 @@ body {
     align-content: space-between;
     text-align: center;
     flex-wrap: wrap;
-    box-shadow: $neon-text-shadow;
-    border: $border-white;
     width: 80vw;
     height: 80vh;
     margin: 10vh 10vw;
     padding: 1vh;
+    div {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     h1 {
       width: 100%;
       font-size: 3vw;
@@ -63,6 +65,13 @@ body {
       color: $neon-text-clr;
       text-shadow: $neon-text-shadow;
     }
+    img {
+      width: 30%;
+      box-shadow: $neon-text-shadow;
+      border: $border-white;
+      filter: grayscale(1);
+    }
+  }
     button {
       font-size: 3vw;
       font-weight: 1;
@@ -73,6 +82,7 @@ body {
       backdrop-filter: blur(6px);
       outline: none;
       padding: 1vw;
+      box-shadow: $neon-text-shadow;
       border: $border-white;
       transition: width 1s;
       top: 75.5%;
